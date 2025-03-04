@@ -12,7 +12,7 @@ Projet du 3eme cercle du cursus 42
 8. Creer plusieurs maps fonctionnelles
 
 # Parsing
-Transformer la map en tableau de char: utiliser get_next_line() une premiere fois pour compter le nombre de lignes et allouer la taille du tableau, puis reutiliser get_next_line() alouer la taille de chaque ligne et les remplir.
+Transformer la map en tableau de char: utiliser **get_next_line()** une premiere fois pour compter le nombre de lignes et allouer la taille du tableau, puis reutiliser **get_next_line()** pour allouer la taille de chaque ligne et les remplir avec **ft_memcpy()**. Fermer le fichier a la fin des deux get_next_line(); faire les deux dans des fonctions differentes pour ne pas avoir besoin de fseek().
 
 # Gestion des erreurs
 Verifier si:
@@ -23,6 +23,6 @@ Verifier si:
   - la map a un seul joueur (P)
   - la map a une seule sortie (E)
   - la map a au moins 1 collectible (C)
-  - chaque element est atteignable par le joueur
+  - chaque element est atteignable par le joueur (utiliser flood?)
 
 Faire des maps tests pour chaque erreur.
