@@ -29,24 +29,28 @@ char	**flood(char **tab, t_point size, t_point begin)
 	tab[begin.y][begin.x] = 'F';
 	if (begin.y > 0 && is_in_set(tab[begin.y - 1][begin.x]))
 	{
+		ft_printf("UP\n");
 		p.x = begin.x;
 		p.y = begin.y - 1;
 		flood(tab, size, p);
 	}
 	if ((begin.y < (size.y - 1)) && is_in_set(tab[begin.y + 1][begin.x]))
 	{
+		ft_printf("DOWN\n");
 		p.x = begin.x;
 		p.y = begin.y + 1;
 		flood(tab, size, p);
 	}
 	if ((begin.x < (size.x - 1)) && is_in_set(tab[begin.y][begin.x + 1]))
 	{
+		ft_printf("RIGHT\n");
 		p.x = begin.x + 1;
 		p.y = begin.y;
 		flood(tab, size, p);
 	}
 	if (begin.x > 0 && is_in_set(tab[begin.y][begin.x - 1]))
 	{
+		ft_printf("LEFT\n");
 		p.x = begin.x - 1;
 		p.y = begin.y;
 		flood(tab, size, p);
