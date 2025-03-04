@@ -1,9 +1,44 @@
 #include "so_long.h"
 #include "libft.h"
 
-static int  is_everything_reachable(char **tab)
+t_point   get_player_pos(char **tab,  t_point pos)
 {
-    void(tab);
+    int     i;
+    int     j;
+
+    i = 0;
+    while (tab[i])
+    {
+        j = 0;
+        while (tab[i][j])
+        {
+            if (tab[i][j] == 'P')
+            {
+                pos.x = i;
+                pos.y = j;
+                return (pos);
+            }
+            j ++;
+        }
+        i ++;
+    }
+    return (pos);
+}
+
+static int  is_everything_reachable(char **tab, int nelem, size_t len)
+{
+    t_point begin;
+    t_point size;
+    char    **flooded;
+
+    begin = get_player_pos(tab, begin);
+    if (begin.x == 0 && begin.y == 0)
+        return (0);
+    ft_printf("x = %d, y = %d\n", begin.x, begin.y);
+    size.x = nelem;
+    size.y = len;
+    flooded = flood(tab, size, begin);
+    display_map(flooded);
     return (1);
 }
 
@@ -46,7 +81,7 @@ static int  has_elem(char **tab, char c)
     return (1);
 }
 
-static int  is_playable(char **tab)
+static int  is_playable(char **tab, int nelem, size_t len)
 {
     //char    **test;
     
@@ -56,7 +91,7 @@ static int  is_playable(char **tab)
         return (0);
     if (has_elem(tab, 'E') == 0)
         return (0);
-    if (is_everything_reachable(tab) == 0)
+    if (is_everything_reachable(tab, nelem, len) == 0)
         return (0);
     //test = flood(tab);
     return (1);
@@ -133,7 +168,7 @@ int is_map_invalid(char **tab, int nelem, size_t len)
     if (is_surrounded_by_walls(tab, nelem, len) == 0)
         return (1);
     write(1, "3\n", 2);
-    if (is_playable(tab) == 0)
+    if (is_playable(tab, nelem, len) == 0)
         return (1);
     return (0);
 }
