@@ -35,8 +35,8 @@ static int  is_everything_reachable(char **tab, int nelem, size_t len)
     if (begin.x == 0 && begin.y == 0)
         return (0);
     ft_printf("x = %d, y = %d\n", begin.x, begin.y);
-    size.x = nelem;
-    size.y = len;
+    size.x = len;
+    size.y = nelem;
     flooded = flood(tab, size, begin);
     display_map(flooded);
     return (1);
