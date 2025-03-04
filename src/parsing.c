@@ -1,6 +1,26 @@
 #include "so_long.h"
 #include "libft.h"
 
+static int  is_everything_flooded(char **map)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while (map[i])
+    {
+        j = 0;
+        while (map[i][j])
+        {
+            if (map[i][j] != '1' && map[i][j] != 'F')
+                return (0);
+            j++;
+        }
+        i ++;
+    }
+    return (1);
+}
+
 t_point   get_player_pos(char **tab,  t_point pos)
 {
     int     i;
@@ -38,7 +58,9 @@ static int  is_everything_reachable(char **tab, int nelem, size_t len)
     size.x = len;
     size.y = nelem;
     flooded = flood(tab, size, begin);
-    display_map(flooded);
+    //display_map(flooded);
+    if (is_everything_flooded(flooded) == 0)
+        return (0);
     return (1);
 }
 
@@ -83,17 +105,18 @@ static int  has_elem(char **tab, char c)
 
 static int  is_playable(char **tab, int nelem, size_t len)
 {
-    //char    **test;
-    
     if (has_elem(tab, 'P') == 0)
         return (0);
+    write(1, "4\n", 2);
     if (has_elem(tab, 'C') == 0)
         return (0);
+    write(1, "5\n", 2);
     if (has_elem(tab, 'E') == 0)
         return (0);
+    write(1, "6\n", 2);
     if (is_everything_reachable(tab, nelem, len) == 0)
         return (0);
-    //test = flood(tab);
+    write(1, "7\n", 2);
     return (1);
 }
 
