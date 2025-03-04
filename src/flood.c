@@ -20,7 +20,7 @@ int	is_in_set(char c)
 	return (1);
 }
 
-void	flood(char **tab, t_point size, t_point begin)
+char	**flood(char **tab, t_point size, t_point begin)
 {
 	char	c;
 	t_point	p;
@@ -51,7 +51,7 @@ void	flood(char **tab, t_point size, t_point begin)
 		p.y = begin.y;
 		flood(tab, size, p);
 	}
-	if 
+	return (tab);
 }
 
 

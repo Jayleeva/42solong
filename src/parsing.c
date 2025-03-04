@@ -1,6 +1,12 @@
 #include "so_long.h"
 #include "libft.h"
 
+static int  is_everything_reachable(char **tab)
+{
+    void(tab);
+    return (1);
+}
+
 static int  has_elem_util(int count, char c)
 {
     if (c == 'C')
@@ -50,8 +56,9 @@ static int  is_playable(char **tab)
         return (0);
     if (has_elem(tab, 'E') == 0)
         return (0);
+    if (is_everything_reachable(tab) == 0)
+        return (0);
     //test = flood(tab);
-    
     return (1);
 }
 
