@@ -182,7 +182,7 @@ static int  is_rectangular(char **tab, int nelem, size_t len)
 
 int is_map_invalid(char **tab, int nelem, size_t len)
 {
-    if (nelem < 3 && len < 5)
+    if (nelem < 3 || len < 3)
         return (1);
     write(1, "1\n", 2);
     if (is_rectangular(tab, nelem, len) == 0)
