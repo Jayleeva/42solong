@@ -56,12 +56,38 @@ typedef struct	s_point
 	int	y;
 }		t_point;
 
+typedef struct	s_tiles
+{
+	t_img	wall;
+	t_img	ground;
+	t_img	exit;
+	t_img	collectible;
+	t_img	collected;
+	t_img	idle_down;
+	t_img	idle_up;
+	t_img	idle_right;
+	t_img	idle_left;
+	t_img	walk_down0;
+	t_img	walk_up0;
+	t_img	walk_right0;
+	t_img	walk_left0;
+	t_img	walk_down1;
+	t_img	walk_up1;
+	t_img	walk_right1;
+	t_img	walk_left1;
+	t_img	walk_down2;
+	t_img	walk_up2;
+	t_img	walk_right2;
+	t_img	walk_left2;
+}		t_tiles;
+
 typedef struct s_data
 {
 	void	*mlx_ptr; // MLX pointer
 	void	*win_ptr; // MLX window pointer
 	//void	*textures[5]; // MLX image pointers (on the stack)
 	//t_map	*map; // Map pointer (contains map details - preferably kept on the stack)
+	t_tiles	tiles;
 }			t_data;
 
 char	**flood(char **tab, t_point size, t_point begin);
