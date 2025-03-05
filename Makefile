@@ -4,7 +4,7 @@ LIBFT_DIR := ./libft
 LIBFT_LIB := $(LIBFT_DIR)/$(LIBFT)
 
 SRC_DIR = ./src
-SRC = parsing.c flood.c display.c is_invalid.c create_window.c
+SRC = parsing.c flood.c display.c is_invalid.c create_window.c inputs.c
 OBJ = $(SRC:.c=.o)
 
 SRC := $(addprefix $(SRC_DIR)/, $(SRC))

@@ -47,6 +47,27 @@ static int count_lines(char *arg)
     return (i);
 }
 
+int is_a_map(char *filename)
+{
+    size_t  i;
+    size_t  j;
+    size_t  l;
+    char    *ext;
+
+    ext = ".ber";
+    i = ft_strlen(filename);
+    j = 1;
+    l = 3;
+    while (j < 4)
+    {
+        if (filename[i - j] != ext[l])
+            return (0);
+        l --;
+        j ++;
+    }
+    return (1);
+}
+
 int main(int argc, char **argv)
 {
 
@@ -56,6 +77,11 @@ int main(int argc, char **argv)
 
     if (argc != 2)
         return (0);
+    if (is_a_map(argv[1]) == 0)
+    {
+        ft_printf("Error : is not a map.\n");
+        return (0);
+    }
     nelem = count_lines(argv[1]);
     tab = (char **)malloc((nelem + 1) * sizeof(char *));
     if (tab == NULL)
