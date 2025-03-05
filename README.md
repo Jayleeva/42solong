@@ -29,7 +29,7 @@ Faire des maps tests pour chaque erreur.
 
 # Choisir les sprites
 - Il faut un format divisible par 8 (16, 32, 64). 
-- Le transparent est considéré comme du blanc par linux. Il faut spécifier que le blanc doit être transparent, et donc ne pas utiliser de blanc pur dans les dessins.
+- Le transparent est considéré comme du blanc par linux. Dans les XPM où il doit y avoir du transparent, il faut remplacer le "none" par "ffffff", et donc ne pas utiliser de blanc pur dans les dessins.
 
 # Implémenter la minilibx
 Cauchemar
@@ -43,7 +43,7 @@ Cauchemer
 - Puis qui appelle **mlx_loop()** sur le mlx_ptr de la structure pour être prêt à recevoir les inputs à tout moment
 
 # Poser les images
-- Convertir les PNG en XPM via un site de conversion, mettre les XPM dans les sources?
+- Convertir les PNG en XPM via un site de conversion (https://to.imagestool.com/png-to-xpm), mettre les XPM dans les sources?
 - Donner le chemin relatif des images à mlx_xpm_file_to_imag()
 - Utiliser ? pour placer les images
 
