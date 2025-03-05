@@ -1,7 +1,7 @@
 #include "so_long.h"
 #include "libft.h"
 
-static char **fill_tab(char *arg, char **tab)
+static char **fill_map(char *arg, char **tab)
 {
     int     fd;
     char    *line;
@@ -17,8 +17,7 @@ static char **fill_tab(char *arg, char **tab)
         line = get_next_line(fd);
         if (line == NULL)
             break;
-        len = ft_strlen(line);
-        ft_memcpy(&tab[i], &line, (int)len);
+        tab[i] = ft_strdup(line);
         i ++;
     }
     tab[i] = NULL;
@@ -86,7 +85,7 @@ int main(int argc, char **argv)
     tab = (char **)malloc((nelem + 1) * sizeof(char *));
     if (tab == NULL)
         return (0);
-    tab = fill_tab(argv[1], tab);
+    tab = fill_map(argv[1], tab);
     //display_map(tab);
     len = ft_strlen(tab[0]);
     if (is_map_invalid(tab, nelem, len) == 1)
