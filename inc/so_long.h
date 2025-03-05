@@ -16,6 +16,39 @@
 # define K_AR_D 65364
 # define K_Q 113
 # define M_CLK_L 1
+# define K_ESC 65307
+
+# define UP -1
+# define DOWN 1
+# define LEFT -1
+# define RIGHT 1
+
+# define tile_size 64
+# define path_wall "./src/sprites_xpm/wall.xpm"
+# define path_ground "./src/sprites_xpm/ground.xpm"
+# define path_exit "./src/sprites_xpm/exit.xpm"
+# define path_collectible "./src/sprites_xpm/collectible.xpm"
+# define path_collected "./src/sprites_xpm/collected.xpm"
+
+# define path_idle_down "./src/sprites_xpm/player_idle_down.xpm"
+# define path_idle_up "./src/sprites_xpm/player_idle_up.xpm"
+# define path_idle_right "./src/sprites_xpm/player_idle_right.xpm"
+# define path_idle_left "./src/sprites_xpm/player_idle_left.xpm"
+
+# define path_walk_down0 "./src/sprites_xpm/player_walk_down0.xpm"
+# define path_walk_up0 "./src/sprites_xpm/player_walk_up0.xpm"
+# define path_walk_right0 "./src/sprites_xpm/player_walk_right0.xpm"
+# define path_walk_left0 "./src/sprites_xpm/player_walk_left0.xpm"
+
+# define path_walk_down1 "./src/sprites_xpm/player_walk_down1.xpm"
+# define path_walk_up1 "./src/sprites_xpm/player_walk_up1.xpm"
+# define path_walk_right1 "./src/sprites_xpm/player_walk_right1.xpm"
+# define path_walk_left1 "./src/sprites_xpm/player_walk_left1.xpm"
+
+# define path_walk_down2 "./src/sprites_xpm/player_walk_down2.xpm"
+# define path_walk_up2 "./src/sprites_xpm/player_walk_up2.xpm"
+# define path_walk_right2 "./src/sprites_xpm/player_walk_right2.xpm"
+# define path_walk_left2 "./src/sprites_xpm/player_walk_left2.xpm"
 
 typedef struct	s_point
 {
@@ -27,7 +60,7 @@ typedef struct s_data
 {
 	void	*mlx_ptr; // MLX pointer
 	void	*win_ptr; // MLX window pointer
-	void	*textures[5]; // MLX image pointers (on the stack)
+	//void	*textures[5]; // MLX image pointers (on the stack)
 	//t_map	*map; // Map pointer (contains map details - preferably kept on the stack)
 }			t_data;
 

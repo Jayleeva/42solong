@@ -7,9 +7,10 @@ Projet du 3eme cercle du cursus 42
 3. Dessiner / trouver les sprites
 4. Transformer les 1/0/e/p/c en images
 5. Creer une nouvelle fenetre qui bouge pas si focus sur une autre / reduite
-6. Implementer les inputs clavier avec affichage du nombre de mouvements dans terminal + fermeture correcte du programme
-7. Implementer condition de victoire: parcourir la map pour savoir combien de collectibles, tant que pas tout ramasse sortie fermee, quand tout ramasse sortie ouverte, quand sort = "you win".
-8. Creer plusieurs maps fonctionnelles
+6. Afficher les images correctement (layering, déplacements, collecte)
+7. Implementer les inputs clavier avec affichage du nombre de mouvements dans terminal + fermeture correcte du programme
+8. Implementer condition de victoire: parcourir la map pour savoir combien de collectibles, tant que pas tout ramasse sortie fermee, quand tout ramasse sortie ouverte, quand sort = "you win".
+9. Creer plusieurs maps fonctionnelles
 
 # Parsing
 Transformer la map en tableau de char: utiliser **get_next_line()** une premiere fois pour compter le nombre de lignes et allouer la taille du tableau, puis reutiliser **get_next_line()** pour allouer la taille de chaque ligne et les remplir avec **ft_memcpy()**. Fermer le fichier a la fin des deux get_next_line(); faire les deux dans des fonctions differentes pour ne pas avoir besoin de fseek().
@@ -39,14 +40,15 @@ Cauchemer
 
 # Créer une nouvelle fenêtre
 - Créer une structure
-- Faire une fonction qui appelle **mini_init()** sur le mlx_ptr de la structure
+- Faire une fonction qui appelle **mlx_init()** sur le mlx_ptr de la structure
 - Puis qui appelle **mlx_new_window()** sur le win_ptr de la structure
 - Puis qui appelle **mlx_loop()** sur le mlx_ptr de la structure pour être prêt à recevoir les inputs à tout moment
 
 # Poser les images
 - Convertir les PNG en XPM via un site de conversion (https://to.imagestool.com/png-to-xpm), mettre les XPM dans les sources?
-- Donner le chemin relatif des images à mlx_xpm_file_to_imag()
-- Utiliser ? pour placer les images
+- Donner le chemin relatif des images à mlx_xpm_file_to_imag() pour les charger; stocker les adresses des images
+- Passer ces adresses à mlx_put_image_to_window() pour placer les images sur la fenêtre, en fonction de la map (initialiser et mettre à jour)
+- Faire en sorte que le joueur soit posé par-dessus le décor (layering)
 
 # Implémenter les inputs
 Utiliser mlx_key_hook()?
