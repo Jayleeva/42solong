@@ -23,9 +23,13 @@ Verifier si:
   - la map a un seul joueur (P)
   - la map a une seule sortie (E)
   - la map a au moins 1 collectible (C)
-  - chaque element est atteignable par le joueur (utiliser flood?)
+  - chaque element est atteignable par le joueur (utiliser flood)
 
 Faire des maps tests pour chaque erreur.
+
+# Choisir les sprites
+- Il faut un format divisible par 8 (16, 32, 64). 
+- Le transparent est considéré comme du blanc par linux. Il faut spécifier que le blanc doit être transparent, et donc ne pas utiliser de blanc pur dans les dessins.
 
 # Implémenter la minilibx
 Cauchemar
@@ -54,7 +58,7 @@ Utiliser mlx_key_hook()?
 etc.
 
 # Faire fermer le programme correctement
-- Si cliqué sur la croix ou appuyé sur ESC ou Q, OU si gagné:
+Si cliqué sur la croix ou appuyé sur ESC ou Q, OU si gagné:
 - Ne pas oublier les free()!
 - Utiliser mlx_destroy_image(), mlx_destroy_window() et mlx_destroy_display() pour éviter les still reachable
 - Puis utiliser exit() pour fermer le programme
