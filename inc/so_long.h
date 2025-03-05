@@ -1,7 +1,7 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # include "libft.h"
-# include "/workspace/42solong/minilibx_linux/mlx.h"
+# include "../minilibx_linux/mlx.h"
 # include <stdlib.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
