@@ -46,10 +46,10 @@ Cauchemer
 # Implémenter les inputs
 Utiliser mlx_key_hook()?
 
-Si hook == KEY_A : décaler joueur d'une case vers la gauche
-Si hook == KEY_W : décaler joueur d'une case vers le haut
-Si hook == KEY_S : décaler joueur d'une case vers le bas
-Si hook == KEY_D : décaler joueur d'une case vers la droite
+- Si hook == KEY_A : décaler joueur d'une case vers la gauche
+- Si hook == KEY_W : décaler joueur d'une case vers le haut
+- Si hook == KEY_S : décaler joueur d'une case vers le bas
+- Si hook == KEY_D : décaler joueur d'une case vers la droite
 
 etc.
 
