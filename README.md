@@ -7,7 +7,7 @@ Projet du 3eme cercle du cursus 42
 3. Dessiner / trouver les sprites
 4. Transformer les 1/0/e/p/c en images
 5. Creer une nouvelle fenetre qui bouge pas si focus sur une autre / reduite
-6. Implementer les inputs clavier avec affichage du nombre de mouvements dans terminal
+6. Implementer les inputs clavier avec affichage du nombre de mouvements dans terminal + fermeture correcte du programme
 7. Implementer condition de victoire: parcourir la map pour savoir combien de collectibles, tant que pas tout ramasse sortie fermee, quand tout ramasse sortie ouverte, quand sort = "you win".
 8. Creer plusieurs maps fonctionnelles
 
@@ -32,7 +32,29 @@ Cauchemar
 Cauchemar
 Cauchemer
 
-## Créer une nouvelle fenêtre
+# Créer une nouvelle fenêtre
 - Créer une structure
 - Faire une fonction qui appelle **mini_init()** sur le mlx_ptr de la structure
 - Puis qui appelle **mlx_new_window()** sur le win_ptr de la structure
+- Puis qui appelle **mlx_loop()** sur le mlx_ptr de la structure pour être prêt à recevoir les inputs à tout moment
+
+# Poser les images
+- Convertir les PNG en XPM via un site de conversion, mettre les XPM dans les sources?
+- Donner le chemin relatif des images à mlx_xpm_file_to_imag()
+- Utiliser ? pour placer les images
+
+# Implémenter les inputs
+Utiliser mlx_key_hook()?
+
+Si hook == KEY_A : décaler joueur d'une case vers la gauche
+Si hook == KEY_W : décaler joueur d'une case vers le haut
+Si hook == KEY_S : décaler joueur d'une case vers le bas
+Si hook == KEY_D : décaler joueur d'une case vers la droite
+
+etc.
+
+# Faire fermer le programme correctement
+- Si cliqué sur la croix ou appuyé sur ESC ou Q, OU si gagné:
+- Ne pas oublier les free()!
+- Utiliser mlx_destroy_image(), mlx_destroy_window() et mlx_destroy_display() pour éviter les still reachable
+- Puis utiliser exit() pour fermer le programme
