@@ -49,6 +49,7 @@ static int count_lines(char *arg)
 
 int main(int argc, char **argv)
 {
+
     char    **tab;
     size_t  len;
     int     nelem;
@@ -68,4 +69,5 @@ int main(int argc, char **argv)
         return (free_tab(tab), 0);
     }
     ft_printf("Map valid!\n");
+    initialize(tab);
 }
