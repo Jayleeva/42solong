@@ -26,3 +26,13 @@ Verifier si:
   - chaque element est atteignable par le joueur (utiliser flood?)
 
 Faire des maps tests pour chaque erreur.
+
+# Implémenter la minilibx
+Cauchemar
+Cauchemar
+Cauchemer
+
+## Créer une nouvelle fenêtre
+- Créer une structure
+- Faire une fonction qui appelle **mini_init()** sur le mlx_ptr de la structure
+- Puis qui appelle **mlx_new_window()** sur le win_ptr de la structure

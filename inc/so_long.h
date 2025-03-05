@@ -2,6 +2,7 @@
 # define SO_LONG_H
 # include "libft.h"
 # include "../minilibx_linux/mlx.h"
+# include "../minilibx_mms_20200219/mlx.h"
 # include <stdlib.h>
 # include <X11/X.h>
 # include <X11/keysym.h>

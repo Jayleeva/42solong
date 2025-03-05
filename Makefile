@@ -11,7 +11,7 @@ SRC := $(addprefix $(SRC_DIR)/, $(SRC))
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I ./inc -I ./libft/inc
-MLX_FLAGS =  -L ./minilibx_linux/mlx.h -L ./minilibx_mms_20202019/mlx.h -lmlx -lXext -lX11 -lm
+MLX_FLAGS =  -L ./minilibx_linux/mlx.h -L ./minilibx_mms_20200219/mlx.h -lmlx -lXext -lX11 -lm
 
 all: $(NAME)
 
