@@ -12,7 +12,7 @@ void	load_and_display_image(t_data data)
 	(wall)->width = img_width;
 	(wall)->height = img_height;
 	write(1, "Mini: 2\n", 8);
-	mlx_put_image_to_window(data.mlx_ptr, data.mlx_ptr, wall, 0, 0);
+	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, wall, 0, 0);
 	write(1, "Mini: 3\n", 8);
 }
 
@@ -33,8 +33,8 @@ int	initialize(char **tab)
 		write(1, "window\n", 7);
 		return (free(data.mlx_ptr), 1);
 	}
-	mlx_loop(data.mlx_ptr);
 	load_and_display_image(data);
+	mlx_loop(data.mlx_ptr);
 	//mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
 	//mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
 	//create_map(data.mlx_ptr, tab);
