@@ -3,7 +3,7 @@
 
 void	create_images(void *mlx, void *win)
 {
-	void	*img;
+	t_img	*img;
 	char	*relative_path = "./sprites_xpm/wall.xpm";
 	int		img_width;
 	int		img_height;
