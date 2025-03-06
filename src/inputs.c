@@ -6,7 +6,23 @@
 	
 /*void	ft_move(t_data *data, char ax, int move)
 {
-	mlx_put_image_to_window();
+	int	max_right = len -1;
+	int	max_up = nelem -1;
+
+	if (!(pos.x > 1) && !(pos.x < max_right))
+		if (!(pos.y > 1) && !(pos.x < max_up))
+			return ;
+	if (move == UP)
+	{
+		if (pos.y -1 == '0')
+			mlx_put_image_to_window();
+		else if (pos.y -1 == 'C')
+			//mettre a jour collecte 
+	}
+	else if (move == LEFT)
+	{
+	}
+	
 }*/
 
 /*int	ft_key_hook(int keycode, t_data *data)

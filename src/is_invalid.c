@@ -180,9 +180,51 @@ static int  is_rectangular(char **tab, int nelem, size_t len)
     return (1);
 }
 
+static int is_in_set_(char *set, char c)
+{
+    int i;
+
+    i = 0;
+	while (set[i])
+	{
+		if (set[i] == c)
+			return (1);
+		else
+			i ++;
+	}
+	return (0);
+}
+
+int has_only_valid_char(char **tab)
+{
+    int     i;
+    int     j;
+    char    *set;
+
+    set =(char *)malloc((6 + 1) * sizeof(char));
+    if (set == NULL)
+        return (1);
+    set = "10PCE\n";
+    i = 0;
+    while (tab[i])
+    {
+        j = 0;
+        while (tab[i][j])
+        {
+            if (is_in_set_(set, tab[i][j]) == 0)
+                return (0);
+            j ++;
+        }
+        i ++;
+    }
+    return (1);
+}
+
 int is_map_invalid(char **tab, int nelem, size_t len)
 {
     if (nelem < 3 || len < 3)
+        return (1);
+    if (has_only_valid_char(tab) == 0)
         return (1);
     write(1, "1\n", 2);
     if (is_rectangular(tab, nelem, len) == 0)
