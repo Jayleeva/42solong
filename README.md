@@ -19,6 +19,7 @@ Transformer la map en tableau de char: utiliser **get_next_line()** une premiere
 Verifier si:
 - le fichier est bien une map (.ber)
 - la map fait au minimum 3 lignes et 5 cases de largeur.
+- la map ne contient que des 1, 0, P, C, E, \n.
 - la map est rectangulaire.
 - la map est entouree de murs (1).
 - la map est jouable:
