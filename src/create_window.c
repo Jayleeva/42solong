@@ -1,16 +1,18 @@
 #include "so_long.h"
 #include "libft.h"
 
-void	load_and_display_image(void *mlx, void *win)
+void	load_and_display_image(t_data data)
 {
 	t_img	*wall;
 	int		img_width;
 	int		img_height;
 
 	write(1, "Mini: 1\n", 8);
-	wall = mlx_xpm_file_to_image(mlx, path_wall, &img_width, &img_height);
+	wall = mlx_xpm_file_to_image(data.mlx_ptr, path_wall, &img_width, &img_height);
+	(wall)->width = img_width;
+	(wall)->height = img_height;
 	write(1, "Mini: 2\n", 8);
-	mlx_put_image_to_window(mlx, win, wall, 0, 0);
+	mlx_put_image_to_window(data.mlx_ptr, data.mlx_ptr, wall, 0, 0);
 	write(1, "Mini: 3\n", 8);
 }
 
@@ -32,7 +34,7 @@ int	initialize(char **tab)
 		return (free(data.mlx_ptr), 1);
 	}
 	mlx_loop(data.mlx_ptr);
-	load_and_display_image(data.mlx_ptr, data.win_ptr);
+	load_and_display_image(data);
 	//mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
 	//mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
 	//create_map(data.mlx_ptr, tab);
