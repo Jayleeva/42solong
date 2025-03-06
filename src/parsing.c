@@ -6,7 +6,6 @@ static char **fill_map(char *arg, char **tab)
     int     fd;
     char    *line;
     int     i;
-    size_t  len;
 
     fd = open(arg, O_RDONLY);
     if (fd < 0)

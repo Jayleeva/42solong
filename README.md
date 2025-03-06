@@ -34,9 +34,9 @@ Faire des maps tests pour chaque erreur.
 - Le transparent est considéré comme du blanc par linux. Dans les XPM où il doit y avoir du transparent, il faut remplacer le "none" par "ffffff", et donc ne pas utiliser de blanc pur dans les dessins.
 
 # Implémenter la minilibx
-Cauchemar
-Cauchemar
-Cauchemer
+- Sur linux: telecharger le fichier minilibx-linux.tgz.
+- Extraire deux fois; copier/deplacer extrait dans les fichiers du projet, supprimer le git, gitignore, .git de la mini.
+- Inclure la mlx dans le .h et le Makefile (attention, deux headers a inclure + des flags specifiques)
 
 # Créer une nouvelle fenêtre
 - Créer une structure

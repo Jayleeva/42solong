@@ -4,22 +4,29 @@ LIBFT_DIR := ./libft
 LIBFT_LIB := $(LIBFT_DIR)/$(LIBFT)
 
 SRC_DIR = ./src
-SRC = parsing.c flood.c display.c is_invalid.c create_window.c inputs.c
+SRC = display.c parsing.c flood.c is_invalid.c create_window.c inputs.c
 OBJ = $(SRC:.c=.o)
 
 SRC := $(addprefix $(SRC_DIR)/, $(SRC))
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I ./inc -I ./libft/inc
-MLX_FLAGS =  -L ./minilibx_linux/mlx.h -L ./minilibx_mms_20200219/mlx.h -lmlx -lXext -lX11 -lm
+MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+INCLUDES = -I/usr/include -Imlx
 
-all: $(NAME)
+all: $(NAME) $(MLX_LIB)
+
+.c.o:
+	$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
 
 $(NAME): $(OBJ) $(LIBFT_LIB)
 	@${CC} ${CFLAGS} ${OBJ} $(LIBFT_LIB) -o $(NAME) $(MLX_FLAGS)
 
 $(LIBFT_LIB):
 	@${MAKE} -C libft
+
+$(MLX_LIB):
+	@make -C $(MLX_DIR)
 
 clean:
 	@${MAKE} -C libft fclean

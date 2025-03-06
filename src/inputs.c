@@ -9,7 +9,7 @@
 	mlx_put_image_to_window();
 }*/
 
-int	ft_key_hook(int keycode, t_data *data)
+/*int	ft_key_hook(int keycode, t_data *data)
 {
 	if (keycode == K_Q || keycode == K_ESC)
 		ft_exit(data);
@@ -21,7 +21,7 @@ int	ft_key_hook(int keycode, t_data *data)
 		ft_move(data, 'y', DOWN);
 	else if (keycode == K_D || keycode == K_AR_R)
 		ft_move(data, 'x', RIGHT);
-	/*if (data->map->map[data->p_y][data->p_x] == 'E')
-		winner(data);*/
+	//if (data->map->map[data->p_y][data->p_x] == 'E')
+		//winner(data);
 	return (0);
-}
+}*/
