@@ -1,6 +1,5 @@
 #include "so_long.h"
 #include "libft.h"
-//#include "mlx.h"
 
 void	create_images(void *mlx, void *win)
 {
@@ -33,8 +32,8 @@ int	initialize(char **tab)
 		write(1, "window\n", 7);
 		return (free(data.mlx_ptr), 1);
 	}
-	create_images(data.mlx_ptr, data.win_ptr);
 	mlx_loop(data.mlx_ptr);
+	create_images(data.mlx_ptr, data.win_ptr);
 	//mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
 	//mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
 	//create_map(data.mlx_ptr, tab);
