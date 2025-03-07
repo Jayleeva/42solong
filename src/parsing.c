@@ -16,6 +16,8 @@ static char **fill_map(char *arg, char **tab)
         line = get_next_line(fd);
         if (line == NULL)
             break;
+        if (line[ft_strlen(line) -1] == '\n')
+            line[ft_strlen(line) -1] = '\0';
         tab[i] = ft_strdup(line);
         i ++;
     }
@@ -85,8 +87,9 @@ int main(int argc, char **argv)
     if (tab == NULL)
         return (0);
     tab = fill_map(argv[1], tab);
-    //display_map(tab);
+    display_map(tab);
     len = ft_strlen(tab[0]);
+    ft_printf("len = %d\n", len);
     if (is_map_invalid(tab, nelem, len) == 1)
     {
         ft_printf("Error : map invalid.\n");

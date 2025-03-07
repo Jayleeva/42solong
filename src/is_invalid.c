@@ -12,7 +12,7 @@ static int  is_everything_flooded(char **map)
         j = 0;
         while (map[i][j])
         {
-            if (map[i][j] != '1' && map[i][j] != 'F' && map[i][j] != '\n' && map[i][j] != '0')
+            if (map[i][j] != '1' && map[i][j] != 'F' && map[i][j] != '0')
                 return (0);
             j++;
         }
@@ -50,14 +50,25 @@ static int  is_everything_reachable(char **tab, int nelem, size_t len)
     t_point begin;
     t_point size;
     char    **flooded;
+    int     i;
 
+    flooded = (char **)malloc((nelem + 1) * sizeof(char *));
+    if (flooded == NULL)
+        return (0);
+    i = 0;
+    while (tab[i])
+    {
+        flooded[i] = ft_strdup(tab[i]);
+        if (flooded[i] == NULL)
+            return(free_tab(flooded), free_tab(tab), 0);
+        i ++;
+    }
     begin = get_player_pos(tab, begin);
     if (begin.x == 0 && begin.y == 0)
         return (0);
-    //ft_printf("x = %d, y = %d\n", begin.x, begin.y);
     size.x = len;
     size.y = nelem;
-    flooded = flood(tab, size, begin);
+    flooded = flood(flooded, size, begin);
     //display_map(flooded);
     if (is_everything_flooded(flooded) == 0)
         return (0);
@@ -124,29 +135,25 @@ static int  is_surrounded_by_walls(char **tab, int nelem, size_t len)
 {
     int i;
     int j;
-    int last;
 
-    last = len -1;
     i = 0;
     while (tab[i])
     {
         if (i == 0 || i == nelem -1)
         {
             j = 0;
-            len = last;
-            while (len)
+            while (tab[i][j])
             {
                 //ft_printf("tab[%d][%d] = %c\n", i, j, tab[i][j]);
                 if (tab[i][j] != '1')
                     return (0);
                 j ++;
-                len --;
             }
         }
         else
         {
             //ft_printf("tab[%d][0] = %c, tab[%d][%d] = %c\n", i, tab[i][0], i, last, tab[i][last -1]);
-            if (tab[i][0] != '1' || tab[i][last -1] != '1')
+            if (tab[i][0] != '1' || tab[i][len -1] != '1')
                 return (0);
         }
         i ++;
@@ -160,7 +167,7 @@ static int  is_rectangular(char **tab, int nelem, size_t len)
     size_t  j;
 
     i = 1;
-    while (nelem -2)
+    while (nelem -1)
     {
         j = 0;
         while (tab[i][j])
@@ -171,12 +178,6 @@ static int  is_rectangular(char **tab, int nelem, size_t len)
         i ++;
         nelem --;
     }
-    j = 0;
-    while (tab[i][j])
-        j ++;
-    //ft_printf("j = %d, len = %d\n", j, len);
-    if (len -1 != j)
-        return (0);
     return (1);
 }
 

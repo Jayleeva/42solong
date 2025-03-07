@@ -8,7 +8,7 @@ void    display_map(char **tab)
     i = 0;
     while (tab[i])
     {
-        ft_printf("%s", tab[i]);
+        ft_printf("%s\n", tab[i]);
         i ++;
     }
     ft_printf("\n");

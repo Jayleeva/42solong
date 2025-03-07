@@ -22,14 +22,17 @@ void	create_map(t_data *data, char **tab)
 	void	*path;
 
 	x = 0;
-	y = 0;
+	(void)data;
+	//display_map(tab);
 	while (tab[x])
 	{
+		y = 0;
 		while (tab[x][y])
 		{
+			ft_printf("x = %d, y = %d\n", x, y);
 			find_path(&path, tab[x][y]);
-			ft_printf("%s]n", path);
-			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, path, x * 64, y * 64);
+			ft_printf("%s\n", path);
+			//mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, path, x * 64, y * 64);
 			y ++;
 		}
 		x ++;
@@ -114,7 +117,6 @@ int	initialize(char **tab, size_t len, int nelem)
 {
 	t_data	data;
 
-	(void)tab;
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (1);
