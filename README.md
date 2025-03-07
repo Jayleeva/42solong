@@ -37,7 +37,7 @@ Faire des maps tests pour chaque erreur.
 # Implémenter la minilibx
 - Sur linux: telecharger le fichier minilibx-linux.tgz.
 - Extraire deux fois; copier/deplacer extrait dans les fichiers du projet, supprimer le git, gitignore, .git de la mini.
-- Inclure la mlx dans le .h et le Makefile (attention, deux headers a inclure + des flags specifiques)
+- Inclure la mlx dans le .h et le Makefile (attention, deux headers a inclure + des flags specifiques + d'abord compiler la mlx puis le projet)
 
 # Créer une nouvelle fenêtre
 - Créer une structure

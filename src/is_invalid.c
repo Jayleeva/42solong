@@ -12,7 +12,7 @@ static int  is_everything_flooded(char **map)
         j = 0;
         while (map[i][j])
         {
-            if (map[i][j] != '1' && map[i][j] != 'F' && map[i][j] != '\n')
+            if (map[i][j] != '1' && map[i][j] != 'F' && map[i][j] != '\n' && map[i][j] != '0')
                 return (0);
             j++;
         }

@@ -93,5 +93,5 @@ int main(int argc, char **argv)
         return (free_tab(tab), 0);
     }
     ft_printf("Map valid!\n");
-    initialize(tab);
+    initialize(tab, len, nelem);
 }

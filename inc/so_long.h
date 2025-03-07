@@ -59,27 +59,27 @@ typedef struct	s_point
 
 typedef struct	s_tiles
 {
-	t_img	wall;
-	t_img	ground;
-	t_img	exit;
-	t_img	collectible;
-	t_img	collected;
-	t_img	idle_down;
-	t_img	idle_up;
-	t_img	idle_right;
-	t_img	idle_left;
-	t_img	walk_down0;
-	t_img	walk_up0;
-	t_img	walk_right0;
-	t_img	walk_left0;
-	t_img	walk_down1;
-	t_img	walk_up1;
-	t_img	walk_right1;
-	t_img	walk_left1;
-	t_img	walk_down2;
-	t_img	walk_up2;
-	t_img	walk_right2;
-	t_img	walk_left2;
+	t_img	*wall;
+	t_img	*ground;
+	t_img	*exit;
+	t_img	*collectible;
+	t_img	*collected;
+	t_img	*idle_down;
+	t_img	*idle_up;
+	t_img	*idle_right;
+	t_img	*idle_left;
+	t_img	*walk_down0;
+	t_img	*walk_up0;
+	t_img	*walk_right0;
+	t_img	*walk_left0;
+	t_img	*walk_down1;
+	t_img	*walk_up1;
+	t_img	*walk_right1;
+	t_img	*walk_left1;
+	t_img	*walk_down2;
+	t_img	*walk_up2;
+	t_img	*walk_right2;
+	t_img	*walk_left2;
 }		t_tiles;
 
 typedef struct s_data
@@ -94,5 +94,7 @@ typedef struct s_data
 char	**flood(char **tab, t_point size, t_point begin);
 void    display_map(char **tab);
 int 	is_map_invalid(char **tab, int nelem, size_t len);
-int		initialize(char **tab);
+int		initialize(char **tab, size_t len, int nelem);
+int		on_keypress(int keycode, t_data *data);
+int		on_destroy(t_data *data);
 #endif
