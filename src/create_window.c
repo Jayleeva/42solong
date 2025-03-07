@@ -1,38 +1,35 @@
 #include "so_long.h"
 #include "libft.h"
 
-void	find_path(void **path, char c)
+void	find_img(t_data *data, void **img, char c)
 {
 	if (c == '1')
-		*path = path_wall;
+		*img = data->tiles.wall;
 	else if (c == '0')
-		*path = path_ground;
+		*img = data->tiles.ground;
 	else if (c == 'E')
-		*path = path_exit;
+		*img = data->tiles.exit;
 	else if (c == 'C')
-		*path = path_collectible;
+		*img = data->tiles.collectible;
 	else
-		*path = path_idle_right;
+		*img = data->tiles.idle_right;
 }
 
 void	create_map(t_data *data, char **tab)
 {
 	int		x;
 	int		y;
-	void	*path;
+	void	*img;
 
 	x = 0;
-	(void)data;
-	//display_map(tab);
 	while (tab[x])
 	{
 		y = 0;
 		while (tab[x][y])
 		{
-			ft_printf("x = %d, y = %d\n", x, y);
-			find_path(&path, tab[x][y]);
-			ft_printf("%s\n", path);
-			//mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, path, x * 64, y * 64);
+			//ft_printf("x = %d, y = %d\n", x, y);
+			find_img(data, &img, tab[x][y]);
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, img, x * 64, y * 64);
 			y ++;
 		}
 		x ++;
@@ -124,6 +121,7 @@ int	initialize(char **tab, size_t len, int nelem)
 	if (!data.win_ptr)
 		return (free(data.mlx_ptr), 1);
 	load_images(&data);
+	(void)tab;
 	create_map(&data, tab);
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
 	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
