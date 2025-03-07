@@ -29,7 +29,9 @@ void	create_map(t_data *data, char **tab)
 		{
 			//ft_printf("x = %d, y = %d\n", x, y);
 			find_img(data, &img, tab[x][y]);
-			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, img, x * 64, y * 64);
+			if (tab[x][y] == 'P')
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->tiles.ground, y * 64, x * 64);
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, img, y * 64, x * 64);
 			y ++;
 		}
 		x ++;
