@@ -15,23 +15,26 @@ void	find_img(t_data *data, void **img, char c)
 		*img = data->tiles.idle_right;
 }
 
-void	create_map(t_data *data, char **tab)
+void	create_map(t_data *data)
 {
 	int		x;
 	int		y;
 	void	*img;
 
+	data->c_remaining = 0;
 	x = 0;
-	while (tab[x])
+	while (data->map[x])
 	{
 		y = 0;
-		while (tab[x][y])
+		while (data->map[x][y])
 		{
 			//ft_printf("x = %d, y = %d\n", x, y);
-			find_img(data, &img, tab[x][y]);
-			if (tab[x][y] == 'P')
+			find_img(data, &img, data->map[x][y]);
+			if (data->map[x][y] == 'P')
 				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->tiles.ground, y * 64, x * 64);
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, img, y * 64, x * 64);
+			if (data->map[x][y] == 'C')
+				data->c_remaining ++;
 			y ++;
 		}
 		x ++;
@@ -116,6 +119,7 @@ int	initialize(char **tab, size_t len, int nelem)
 {
 	t_data	data;
 
+	data.was_carot = 0;
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (1);
@@ -123,8 +127,8 @@ int	initialize(char **tab, size_t len, int nelem)
 	if (!data.win_ptr)
 		return (free(data.mlx_ptr), 1);
 	load_images(&data);
-	(void)tab;
-	create_map(&data, tab);
+	data.map = tab;
+	create_map(&data);
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
 	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
 	mlx_loop(data.mlx_ptr);

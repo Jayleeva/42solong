@@ -87,7 +87,9 @@ typedef struct s_data
 	void	*mlx_ptr; // MLX pointer
 	void	*win_ptr; // MLX window pointer
 	//void	*textures[5]; // MLX image pointers (on the stack)
-	//t_map	*map; // Map pointer (contains map details - preferably kept on the stack)
+	char	**map; // Map pointer (contains map details - preferably kept on the stack)
+	int		c_remaining;
+	int		was_carot;
 	t_tiles	tiles;
 }			t_data;
 
@@ -95,6 +97,8 @@ char	**flood(char **tab, t_point size, t_point begin);
 void    display_map(char **tab);
 int 	is_map_invalid(char **tab, int nelem, size_t len);
 int		initialize(char **tab, size_t len, int nelem);
+void	ft_move(t_data *data, char move);
+t_point	get_player_pos(char **tab,  t_point pos);
 int		on_keypress(int keycode, t_data *data);
 int		on_destroy(t_data *data);
 #endif
