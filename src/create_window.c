@@ -129,6 +129,8 @@ int	initialize(char **tab, size_t len, int nelem)
 	load_images(&data);
 	data.map = tab;
 	create_map(&data);
+	data.was_carot = 0;
+	data.was_exit = 0;
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
 	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
 	mlx_loop(data.mlx_ptr);

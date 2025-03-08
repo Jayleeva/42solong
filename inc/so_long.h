@@ -90,6 +90,7 @@ typedef struct s_data
 	char	**map; // Map pointer (contains map details - preferably kept on the stack)
 	int		c_remaining;
 	int		was_carot;
+	int		was_exit;
 	t_tiles	tiles;
 }			t_data;
 

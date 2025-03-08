@@ -61,6 +61,23 @@ Utiliser mlx_key_hook()?
 
 etc.
 
+init
+    first tile : mlx.put ground
+    first tile : mlx.put player
+
+move
+    xy + move
+    new tile : mlx. put player
+    if new tile == C, was_carot = 1 remaining --
+    else if new tile == E, if all collected, exit(), else was_exit = 1
+    tab[x][y] = P
+
+
+    if was_carot == 1 || last tile == c, mlx. put collected tab[x][y] = c, was_carot = 0
+    else if was_exit == 1 || last tile == E, mlx. put exit tab[x][y] = E, was_exit = 0
+    else tab[x][y] = 0
+    last tile: mlx.put ground
+
 # Faire fermer le programme correctement
 Si cliqué sur la croix ou appuyé sur ESC ou Q, OU si gagné:
 - Ne pas oublier les free()!

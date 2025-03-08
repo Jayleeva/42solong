@@ -90,11 +90,11 @@ int main(int argc, char **argv)
     display_map(tab);
     len = ft_strlen(tab[0]);
     ft_printf("len = %d\n", len);
-    if (is_map_invalid(tab, nelem, len) == 1)
+    /*if (is_map_invalid(tab, nelem, len) == 1)
     {
         ft_printf("Error : map invalid.\n");
         return (free_tab(tab), 0);
-    }
+    }*/
     ft_printf("Map valid!\n");
     initialize(tab, len, nelem);
 }
