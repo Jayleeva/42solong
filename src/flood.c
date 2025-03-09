@@ -1,15 +1,10 @@
 #include "so_long.h"
 #include "libft.h"
 
-int	is_in_set(char c)
+int	is_in_set(char *set, char c)
 {
-	char	set[4];
-	int		i;
+	int	i;
 
-	set[0] = '0';
-	set[1] = 'C';
-	set[2] = 'E';
-	set[3] = 'P';
 	i = 0;
 	while (set[i])
 	{
@@ -23,36 +18,28 @@ int	is_in_set(char c)
 
 char	**flood(char **tab, t_point size, t_point begin)
 {
-	t_point	p;
-
 	tab[begin.y][begin.x] = 'F';
-	if (begin.y > 0 && is_in_set(tab[begin.y - 1][begin.x]))
+	if (begin.y > 0 && is_in_set(SET_FLOOD, tab[begin.y - 1][begin.x]))
 	{
-		//ft_printf("UP\n");
-		p.x = begin.x;
-		p.y = begin.y - 1;
-		flood(tab, size, p);
+		begin.y = begin.y - 1;
+		flood(tab, size, begin);
 	}
-	if ((begin.y < (size.y - 1)) && is_in_set(tab[begin.y + 1][begin.x]))
+	if ((begin.y < (size.y - 1))
+		&& is_in_set(SET_FLOOD, tab[begin.y + 1][begin.x]))
 	{
-		//ft_printf("DOWN\n");
-		p.x = begin.x;
-		p.y = begin.y + 1;
-		flood(tab, size, p);
+		begin.y = begin.y + 1;
+		flood(tab, size, begin);
 	}
-	if ((begin.x < (size.x - 1)) && is_in_set(tab[begin.y][begin.x + 1]))
+	if ((begin.x < (size.x - 1))
+		&& is_in_set(SET_FLOOD, tab[begin.y][begin.x + 1]))
 	{
-		//ft_printf("RIGHT\n");
-		p.x = begin.x + 1;
-		p.y = begin.y;
-		flood(tab, size, p);
+		begin.x = begin.x + 1;
+		flood(tab, size, begin);
 	}
-	if (begin.x > 0 && is_in_set(tab[begin.y][begin.x - 1]))
+	if (begin.x > 0 && is_in_set(SET_FLOOD, tab[begin.y][begin.x - 1]))
 	{
-		//ft_printf("LEFT\n");
-		p.x = begin.x - 1;
-		p.y = begin.y;
-		flood(tab, size, p);
+		begin.x = begin.x - 1;
+		flood(tab, size, begin);
 	}
 	return (tab);
 }

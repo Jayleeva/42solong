@@ -16,8 +16,6 @@ int	on_keypress(int keycode, t_data *data)
 		ft_move(data, 'D');
 	else if (keycode == K_D || keycode == K_AR_R)
 		ft_move(data, 'R');
-	//if (data->map->map[data->p_y][data->p_x] == 'E')
-		//winner(data);
 	return (0);
 }
 
