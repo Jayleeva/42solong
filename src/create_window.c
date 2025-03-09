@@ -62,6 +62,27 @@ void	load_images(t_data *data)
 	(data->tiles.collected)->width = img_width;
 	(data->tiles.collected)->height = img_height;
 
+	/*int		mlx_pixel_put(void *mlx_ptr, void *win_ptr, int x, int y, int color);
+	void	*mlx_new_image(void *mlx_ptr,int width,int height);
+
+	int	i;
+	int	j;
+	int	color;
+	i = 64;
+	j = 64;
+	while (i)
+	{
+		while (j)
+		{
+			color = mlx_get_pixel(data->tiles.idle_right, i, j);
+			if (color != mlx_rgb_to_int(0, 255, 255, 255))
+				//mlx_draw_pixel(data->mlx_ptr, x + i, y + j, color);
+				mlx_pixel_put(data->mlx_ptr, data->win_ptr, i, j, color);
+			j ++;
+		}
+		i ++;
+	}*/
+
 	data->tiles.idle_down = mlx_xpm_file_to_image(data->mlx_ptr, path_idle_down, &img_width, &img_height);
 	(data->tiles.idle_down)->width = img_width;
 	(data->tiles.idle_down)->height = img_height;
