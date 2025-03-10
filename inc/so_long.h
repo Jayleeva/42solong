@@ -53,35 +53,48 @@
 # define SET_FLOOD "0PCE"
 # define SET_MAP "10PCE"
 
+typedef struct s_trans
+{
+	int		bpp;
+	int		size_line;
+	int		endian;
+}			t_trans;
+
 typedef struct s_point
 {
 	int	x;
 	int	y;
 }		t_point;
 
-typedef struct s_tiles
+typedef struct s_image
 {
-	t_img	*wall;
-	t_img	*ground;
-	t_img	*exit;
-	t_img	*collectible;
-	t_img	*collected;
-	t_img	*idle_down;
-	t_img	*idle_up;
-	t_img	*idle_right;
-	t_img	*idle_left;
-	t_img	*walk_down0;
-	t_img	*walk_up0;
-	t_img	*walk_right0;
-	t_img	*walk_left0;
-	t_img	*walk_down1;
-	t_img	*walk_up1;
-	t_img	*walk_right1;
-	t_img	*walk_left1;
-	t_img	*walk_down2;
-	t_img	*walk_up2;
-	t_img	*walk_right2;
-	t_img	*walk_left2;
+	t_img	*img;
+	int		transparent;
+} t_image;
+
+typedef struct	s_tiles
+{
+	t_image	wall;
+	t_image	ground;
+	t_image	exit;
+	t_image	collectible;
+	t_image	collected;
+	t_image	idle_down;
+	t_image	idle_up;
+	t_image	idle_right;
+	t_image	idle_left;
+	t_image	walk_down0;
+	t_image	walk_up0;
+	t_image	walk_right0;
+	t_image walk_left0;
+	t_image	walk_down1;
+	t_image	walk_up1;
+	t_image	walk_right1;
+	t_image	walk_left1;
+	t_image	walk_down2;
+	t_image	walk_up2;
+	t_image	walk_right2;
+	t_image	walk_left2;
 }		t_tiles;
 
 typedef struct s_data
@@ -110,4 +123,7 @@ void	ft_move(t_data *data, char move);
 t_point	get_player_pos(char **tab, t_point pos);
 int		on_keypress(int keycode, t_data *data);
 int		on_destroy(t_data *data);
+void	check_transparency(t_image *image);
+int		put_image_with_transparency(t_data *data, t_image *image, int x, int y);
+
 #endif

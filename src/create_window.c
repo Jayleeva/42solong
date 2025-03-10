@@ -1,25 +1,25 @@
 #include "so_long.h"
 #include "libft.h"
 
-void	find_img(t_data *data, void **img, char c)
+void	find_img(t_data *data, t_image *image, char c)
 {
 	if (c == '1')
-		*img = data->tiles.wall;
+		image->img = data->tiles.wall.img;
 	else if (c == '0')
-		*img = data->tiles.ground;
+		image->img = data->tiles.ground.img;
 	else if (c == 'E')
-		*img = data->tiles.exit;
+		image->img = data->tiles.exit.img;
 	else if (c == 'C')
-		*img = data->tiles.collectible;
+		image->img = data->tiles.collectible.img;
 	else
-		*img = data->tiles.idle_right;
+		image->img = data->tiles.idle_right.img;
 }
 
 void	create_map(t_data *data)
 {
 	int		x;
 	int		y;
-	void	*img;
+	t_image	image;
 
 	data->c_remaining = 0;
 	x = 0;
@@ -28,12 +28,12 @@ void	create_map(t_data *data)
 		y = 0;
 		while (data->map[x][y])
 		{
-			find_img(data, &img, data->map[x][y]);
+			find_img(data, &image, data->map[x][y]);
 			if (data->map[x][y] == 'P')
-				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-					data->tiles.ground, y * TILE_SIZE, x * TILE_SIZE);
-			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-				img, y * TILE_SIZE, x * TILE_SIZE);
+				put_image_with_transparency(data,
+					&data->tiles.ground, y * TILE_SIZE, x * TILE_SIZE);
+			put_image_with_transparency(data, &image,
+				y * TILE_SIZE, x * TILE_SIZE);
 			if (data->map[x][y] == 'C')
 				data->c_remaining ++;
 			y ++;

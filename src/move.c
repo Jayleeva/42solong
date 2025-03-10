@@ -3,7 +3,7 @@
 
 static int	move_left(t_data *data, int frame)
 {
-	t_point	pos = {};
+	t_point	pos;
 
 	pos = get_player_pos(data->map, pos);
 	if (data->map[pos.x][pos.y + LEFT] == '1')
@@ -12,24 +12,24 @@ static int	move_left(t_data *data, int frame)
 	pos.y += LEFT;
 	update_new_tile(data, pos);
 	if (frame == 0)
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->tiles.idle_left, (pos.y) * TILE_SIZE, (pos.x) * TILE_SIZE);
+		put_image_with_transparency(data,
+			&data->tiles.idle_left, (pos.y) * 64, (pos.x) * 64);
 	else if (frame == 1)
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->tiles.walk_left0, (pos.y) * TILE_SIZE, (pos.x) * TILE_SIZE);
+		put_image_with_transparency(data,
+			&data->tiles.walk_left0, (pos.y) * 64, (pos.x) * 64);
 	else if (frame == 2)
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->tiles.walk_left1, (pos.y) * TILE_SIZE, (pos.x) * TILE_SIZE);
+		put_image_with_transparency(data,
+			&data->tiles.walk_left1, (pos.y) * 64, (pos.x) * 64);
 	else if (frame == 3)
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->tiles.walk_left2, (pos.y) * TILE_SIZE, (pos.x) * TILE_SIZE);
+		put_image_with_transparency(data,
+			&data->tiles.walk_left2, (pos.y) * 64, (pos.x) * 64);
 	data->map[pos.x][pos.y] = 'P';
 	return (1);
 }
 
 static int	move_right(t_data *data, int frame)
 {
-	t_point	pos = {};
+	t_point	pos;
 
 	pos = get_player_pos(data->map, pos);
 	if (data->map[pos.x][pos.y + RIGHT] == '1')
@@ -38,24 +38,24 @@ static int	move_right(t_data *data, int frame)
 	pos.y += RIGHT;
 	update_new_tile(data, pos);
 	if (frame == 0)
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->tiles.idle_right, (pos.y) * TILE_SIZE, (pos.x) * TILE_SIZE);
+		put_image_with_transparency(data,
+			&data->tiles.idle_right, (pos.y) * 64, (pos.x) * 64);
 	else if (frame == 1)
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->tiles.walk_right0, (pos.y) * TILE_SIZE, (pos.x) * TILE_SIZE);
+		put_image_with_transparency(data,
+			&data->tiles.walk_right0, (pos.y) * 64, (pos.x) * 64);
 	else if (frame == 2)
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->tiles.walk_right1, (pos.y) * TILE_SIZE, (pos.x) * TILE_SIZE);
+		put_image_with_transparency(data,
+			&data->tiles.walk_right1, (pos.y) * 64, (pos.x) * 64);
 	else if (frame == 3)
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->tiles.walk_right2, (pos.y) * TILE_SIZE, (pos.x) * TILE_SIZE);
+		put_image_with_transparency(data,
+			&data->tiles.walk_right2, (pos.y) * 64, (pos.x) * 64);
 	data->map[pos.x][pos.y] = 'P';
 	return (1);
 }
 
 static int	move_up(t_data *data, int frame)
 {
-	t_point	pos = {};
+	t_point	pos;
 
 	pos = get_player_pos(data->map, pos);
 	if (data->map[pos.x + UP][pos.y] == '1')
@@ -64,24 +64,24 @@ static int	move_up(t_data *data, int frame)
 	pos.x += UP;
 	update_new_tile(data, pos);
 	if (frame == 0)
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->tiles.idle_up, (pos.y) * TILE_SIZE, (pos.x) * TILE_SIZE);
+		put_image_with_transparency(data,
+			&data->tiles.idle_up, (pos.y) * 64, (pos.x) * 64);
 	else if (frame == 1)
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->tiles.walk_up0, (pos.y) * TILE_SIZE, (pos.x) * TILE_SIZE);
+		put_image_with_transparency(data,
+			&data->tiles.walk_up0, (pos.y) * 64, (pos.x) * 64);
 	else if (frame == 2)
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->tiles.walk_up1, (pos.y) * TILE_SIZE, (pos.x) * TILE_SIZE);
+		put_image_with_transparency(data,
+			&data->tiles.walk_up1, (pos.y) * 64, (pos.x) * 64);
 	else if (frame == 3)
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->tiles.walk_up2, (pos.y) * TILE_SIZE, (pos.x) * TILE_SIZE);
+		put_image_with_transparency(data,
+			&data->tiles.walk_up2, (pos.y) * 64, (pos.x) * 64);
 	data->map[pos.x][pos.y] = 'P';
 	return (1);
 }
 
 static int	move_down(t_data *data, int frame)
 {
-	t_point	pos = {};
+	t_point	pos;
 
 	pos = get_player_pos(data->map, pos);
 	if (data->map[pos.x + DOWN][pos.y] == '1')
@@ -90,17 +90,17 @@ static int	move_down(t_data *data, int frame)
 	pos.x += DOWN;
 	update_new_tile(data, pos);
 	if (frame == 0)
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->tiles.idle_down, (pos.y) * TILE_SIZE, (pos.x) * TILE_SIZE);
+		put_image_with_transparency(data,
+			&data->tiles.idle_down, (pos.y) * 64, (pos.x) * 64);
 	else if (frame == 1)
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->tiles.walk_down0, (pos.y) * TILE_SIZE, (pos.x) * TILE_SIZE);
+		put_image_with_transparency(data,
+			&data->tiles.walk_down0, (pos.y) * 64, (pos.x) * 64);
 	else if (frame == 2)
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->tiles.walk_down1, (pos.y) * TILE_SIZE, (pos.x) * TILE_SIZE);
+		put_image_with_transparency(data,
+			&data->tiles.walk_down1, (pos.y) * 64, (pos.x) * 64);
 	else if (frame == 3)
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->tiles.walk_down2, (pos.y) * TILE_SIZE, (pos.x) * TILE_SIZE);
+		put_image_with_transparency(data,
+			&data->tiles.walk_down2, (pos.y) * 64, (pos.x) * 64);
 	data->map[pos.x][pos.y] = 'P';
 	return (1);
 }

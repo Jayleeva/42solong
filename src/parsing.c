@@ -17,7 +17,7 @@ static char	**fill_map(char *arg, char **tab)
 		if (line == NULL)
 			break ;
 		if (line[ft_strlen(line) - 1] == '\n')
-			line[ft_strlen(line) - 1] = '\0';
+			line[ft_strlen(line) - 2] = '\0';
 		tab[i] = ft_strdup(line);
 		i ++;
 	}
@@ -78,7 +78,7 @@ int	main(int argc, char **argv)
 		return (0);
 	if (is_a_map(argv[1]) == 0)
 	{
-		ft_printf("Error : is not a map.\n");
+		write(2, "Error\nInvalid file : is not a map.\n", 35);
 		return (0);
 	}
 	nelem = count_lines(argv[1]);
@@ -86,14 +86,8 @@ int	main(int argc, char **argv)
 	if (tab == NULL)
 		return (0);
 	tab = fill_map(argv[1], tab);
-	//display_map(tab);
 	len = ft_strlen(tab[0]);
-	ft_printf("len = %d\n", len);
 	if (is_map_invalid(tab, nelem, len) == 1)
-	{
-		ft_printf("Error : map invalid.\n");
 		return (free_tab(tab), 0);
-	}
-	ft_printf("Map valid!\n");
 	initialize(tab, len, nelem);
 }

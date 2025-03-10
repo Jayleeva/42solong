@@ -69,10 +69,10 @@ Définir **on_keypress()** :
 - Si keycode == K_G || K_ESC : fermer le jeu
 
 Définir **on_destroy()**:
+- Utiliser **mlx_destroy_image()** pour detruire chaque image!! (eviter les still reachable)
 - Utiliser **mlx_destroy_window()** pour détruire la fenêtre
 - Utiliser **mlx_destroy_display()** pour détruire le contenu affiché dans la fenêtre
-  int	mlx_destroy_image(void *mlx_ptr, void *img_ptr);
-- Libérer la mémoire avec **free()**
+- Libérer la mémoire avec **free()** (ne rien oublier!!)
 - Utiliser **exit()** pour fermer le programme correctement (sans cela, la loop segfault).
 
 # Gérer les mouvements

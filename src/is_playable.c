@@ -3,7 +3,7 @@
 
 int	is_everything_reachable(char **tab, int nelem, size_t len)
 {
-	t_point	begin = {};
+	t_point	begin;
 	t_point	size;
 	char	**flooded;
 	int		i;
