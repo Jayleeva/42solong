@@ -43,9 +43,9 @@ void	create_map(t_data *data)
 			find_img(data, &img, data->map[x][y]);
 			if (data->map[x][y] == 'P')
 				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-					data->tiles.ground.img, y * TILE_SIZE, x * TILE_SIZE);
+					data->tiles.ground.img, y * 64, x * 64);
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-				img, y * TILE_SIZE, x * TILE_SIZE);
+				img, y * 64, x * 64);
 			if (data->map[x][y] == 'C')
 				data->c_remaining ++;
 			y ++;
@@ -61,8 +61,8 @@ int	initialize(char **tab, size_t len, int nelem)
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (1);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, (int)len * TILE_SIZE,
-			nelem * TILE_SIZE, "So long");
+	data.win_ptr = mlx_new_window(data.mlx_ptr, (int)len * 64,
+			nelem * 64, "So long");
 	if (!data.win_ptr)
 		return (free(data.mlx_ptr), 1);
 	load_images(&data);
