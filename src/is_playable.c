@@ -22,7 +22,7 @@ int	is_everything_reachable(char **tab, int nelem, size_t len)
 
 	flooded = (char **)malloc((nelem + 1) * sizeof(char *));
 	if (flooded == NULL)
-		return (0);
+		return (free_tab(tab), 0);
 	i = 0;
 	while (tab[i])
 	{
@@ -36,7 +36,7 @@ int	is_everything_reachable(char **tab, int nelem, size_t len)
 	size.y = nelem;
 	flooded = flood(flooded, size, begin);
 	if (is_everything_flooded(flooded) == 0)
-		return (0);
+		return (free_tab(flooded), free_tab(tab), 0);
 	return (1);
 }
 
