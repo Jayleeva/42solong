@@ -32,7 +32,7 @@ Faire des maps tests pour chaque erreur.
 
 # Choisir les sprites
 - Il faut un format divisible par 8 (16, 32, 64). 
-- Le transparent est considéré comme du blanc par linux. Dans les XPM où il doit y avoir du transparent, il faut remplacer le "None" par "#ffffff", et donc ne pas utiliser de blanc pur dans les dessins. (sans doute insuffisant, utiliser put_pixel pour reconstruire chaque image avec de la transparence)
+- Le transparent n'est pas géré par la minilibx pour linux. On peut remplacer le transparent par la couleur de son choix, mais c'est tout. Oui, c'est moche.
 
 # Implémenter la minilibx
 - Sur linux: telecharger le fichier minilibx-linux.tgz.
@@ -46,9 +46,9 @@ Faire des maps tests pour chaque erreur.
 - Puis qui appelle **mlx_loop()** sur le mlx_ptr de la structure pour faire tourner le programme à l'infini, jusqu'au exit().
 
 # Poser les images
-- Convertir les PNG en XPM via un site de conversion (https://to.imagestool.com/png-to-xpm), mettre les XPM dans les sources?
-- Donner le chemin relatif des images à **mlx_xpm_file_to_imag()** pour les charger; stocker les adresses des images
-- Passer ces adresses à **mlx_put_image_to_window()** pour placer les images sur la fenêtre, en fonction de la map (initialiser et mettre à jour)
+- Convertir les PNG en XPM via un site de conversion (https://to.imagestool.com/png-to-xpm), mettre les XPM dans les sources.
+- Donner le chemin relatif des images à **mlx_xpm_file_to_imag()** pour les charger; stocker les adresses des images.
+- Passer ces adresses à **mlx_put_image_to_window()** pour placer les images sur la fenêtre, en fonction de la map (initialiser et mettre à jour).
 - Faire en sorte que le joueur soit posé par-dessus le décor (layering): d'abord placer la tuile du fond, puis celle du joueur.
 
 # Implémenter les inputs
@@ -69,7 +69,7 @@ Définir **on_keypress()** :
 - Si keycode == K_G || K_ESC : fermer le jeu
 
 Définir **on_destroy()**:
-- Utiliser **mlx_destroy_image()** pour detruire chaque image!! (eviter les still reachable)
+- Utiliser **mlx_destroy_image()** pour détruire chaque image!! (éviter les still reachable)
 - Utiliser **mlx_destroy_window()** pour détruire la fenêtre
 - Utiliser **mlx_destroy_display()** pour détruire le contenu affiché dans la fenêtre
 - Libérer la mémoire avec **free()** (ne rien oublier!!)
