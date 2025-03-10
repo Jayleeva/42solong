@@ -74,5 +74,5 @@ int	initialize(char **tab, size_t len, int nelem)
 	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy,
 		&data);
 	mlx_loop(data.mlx_ptr);
-	return (0);
+	return (free(data.mlx_ptr), 0);
 }
