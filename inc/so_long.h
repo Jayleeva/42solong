@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                         ::::::::           */
+/*   so_long.h                                           :+:    :+:           */
+/*                                                      +:+                   */
+/*   By: cyglardo <marvin@42.fr>                       +#+                    */
+/*                                                    +#+                     */
+/*   Created: 2025/03/10 16:42:29 by cyglardo       #+#    #+#                */
+/*   Updated: 2025/03/10 16:42:30 by cyglardo       ########   odam.nl        */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # include "libft.h"
@@ -21,8 +33,6 @@
 # define DOWN 1
 # define LEFT -1
 # define RIGHT 1
-
-# define TILE_SIZE 64
 
 # define PATH_WALL "./src/sprites_xpm/wall.xpm"
 # define PATH_GROUND "./src/sprites_xpm/ground.xpm"
@@ -53,13 +63,6 @@
 # define SET_FLOOD "0PCE"
 # define SET_MAP "10PCE"
 
-typedef struct s_trans
-{
-	int		bpp;
-	int		size_line;
-	int		endian;
-}			t_trans;
-
 typedef struct s_point
 {
 	int	x;
@@ -69,10 +72,9 @@ typedef struct s_point
 typedef struct s_image
 {
 	t_img	*img;
-	int		transparent;
-} t_image;
+}			t_image;
 
-typedef struct	s_tiles
+typedef struct s_tiles
 {
 	t_image	wall;
 	t_image	ground;
@@ -86,7 +88,7 @@ typedef struct	s_tiles
 	t_image	walk_down0;
 	t_image	walk_up0;
 	t_image	walk_right0;
-	t_image walk_left0;
+	t_image	walk_left0;
 	t_image	walk_down1;
 	t_image	walk_up1;
 	t_image	walk_right1;
@@ -95,7 +97,7 @@ typedef struct	s_tiles
 	t_image	walk_up2;
 	t_image	walk_right2;
 	t_image	walk_left2;
-}		t_tiles;
+}			t_tiles;
 
 typedef struct s_data
 {
@@ -123,7 +125,5 @@ void	ft_move(t_data *data, char move);
 t_point	get_player_pos(char **tab, t_point pos);
 int		on_keypress(int keycode, t_data *data);
 int		on_destroy(t_data *data);
-void	check_transparency(t_image *image);
-int		put_image_with_transparency(t_data *data, t_image *image, int x, int y);
 
 #endif

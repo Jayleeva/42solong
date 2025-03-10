@@ -1,25 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                         ::::::::           */
+/*   create_window.c                                     :+:    :+:           */
+/*                                                      +:+                   */
+/*   By: cyglardo <marvin@42.fr>                       +#+                    */
+/*                                                    +#+                     */
+/*   Created: 2025/03/10 16:40:11 by cyglardo       #+#    #+#                */
+/*   Updated: 2025/03/10 16:40:14 by cyglardo       ########   odam.nl        */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 #include "libft.h"
 
-void	find_img(t_data *data, t_image *image, char c)
+void	find_img(t_data *data, t_img **img, char c)
 {
 	if (c == '1')
-		image->img = data->tiles.wall.img;
+		*img = data->tiles.wall.img;
 	else if (c == '0')
-		image->img = data->tiles.ground.img;
+		*img = data->tiles.ground.img;
 	else if (c == 'E')
-		image->img = data->tiles.exit.img;
+		*img = data->tiles.exit.img;
 	else if (c == 'C')
-		image->img = data->tiles.collectible.img;
+		*img = data->tiles.collectible.img;
 	else
-		image->img = data->tiles.idle_right.img;
+		*img = data->tiles.idle_right.img;
 }
 
 void	create_map(t_data *data)
 {
 	int		x;
 	int		y;
-	t_image	image;
+	t_img	*img;
 
 	data->c_remaining = 0;
 	x = 0;
@@ -28,12 +40,12 @@ void	create_map(t_data *data)
 		y = 0;
 		while (data->map[x][y])
 		{
-			find_img(data, &image, data->map[x][y]);
+			find_img(data, &img, data->map[x][y]);
 			if (data->map[x][y] == 'P')
-				put_image_with_transparency(data,
-					&data->tiles.ground, y * TILE_SIZE, x * TILE_SIZE);
-			put_image_with_transparency(data, &image,
-				y * TILE_SIZE, x * TILE_SIZE);
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+					data->tiles.ground.img, y * TILE_SIZE, x * TILE_SIZE);
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+				img, y * TILE_SIZE, x * TILE_SIZE);
 			if (data->map[x][y] == 'C')
 				data->c_remaining ++;
 			y ++;
@@ -46,7 +58,6 @@ int	initialize(char **tab, size_t len, int nelem)
 {
 	t_data	data;
 
-	data.was_carot = 0;
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (1);

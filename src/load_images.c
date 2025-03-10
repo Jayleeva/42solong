@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                         ::::::::           */
+/*   load_images.c                                       :+:    :+:           */
+/*                                                      +:+                   */
+/*   By: cyglardo <marvin@42.fr>                       +#+                    */
+/*                                                    +#+                     */
+/*   Created: 2025/03/10 16:41:13 by cyglardo       #+#    #+#                */
+/*   Updated: 2025/03/10 16:41:14 by cyglardo       ########   odam.nl        */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 #include "libft.h"
 
@@ -9,7 +21,6 @@ void	load_image(t_image *tile, char *path, void *mlx_ptr)
 	tile->img = mlx_xpm_file_to_image(mlx_ptr, path, &img_width, &img_height);
 	(tile->img)->width = img_width;
 	(tile->img)->height = img_height;
-	check_transparency(tile);
 }
 
 void	load_walk_frames(t_data *data)

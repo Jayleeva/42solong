@@ -6,7 +6,7 @@ MLX_DIR = ./minilibx_linux
 MLX_LIB = $(MLX_DIR)/libmlx.a
 
 SRC_DIR = ./src
-SRC = display.c parsing.c flood.c is_invalid.c is_playable.c is_playable_utils.c create_window.c load_images.c inputs.c move.c update_tiles.c transparent.c transparent_utils.c
+SRC = display.c parsing.c flood.c is_invalid.c is_playable.c is_playable_utils.c create_window.c load_images.c inputs.c move.c update_tiles.c
 OBJ = $(SRC:.c=.o)
 
 SRC := $(addprefix $(SRC_DIR)/, $(SRC))
