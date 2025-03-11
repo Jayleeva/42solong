@@ -22,7 +22,7 @@ static char	*read_line(int fd, char *stash)
 	if (buffer == NULL)
 		return (free(stash), NULL);
 	read_bytes = 1;
-	while (read_bytes > 0 && (!*stash || strchr_(stash, '\n') == -1)) 
+	while (read_bytes > 0 && (!*stash || strchr_(stash, '\n') == -1))
 	{
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
 		if (read_bytes == -1)

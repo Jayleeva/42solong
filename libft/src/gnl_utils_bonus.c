@@ -20,7 +20,7 @@ ssize_t	strchr_(char *s, char c)
 	while (s[i])
 	{
 		if (s[i] == c)
-			return (i);	
+			return (i);
 		i ++;
 	}
 	return (-1);
@@ -35,4 +35,3 @@ ssize_t	ft_strlen_(const char *str)
 		i ++;
 	return (i);
 }
-
