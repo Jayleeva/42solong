@@ -21,7 +21,7 @@ static char	**fill_map(char *arg, char **tab)
 
 	fd = open(arg, O_RDONLY);
 	if (fd < 0)
-		return (0);
+		return (NULL);
 	i = 0;
 	while (1)
 	{
@@ -38,7 +38,6 @@ static char	**fill_map(char *arg, char **tab)
 	}
 	tab[i] = NULL;
 	close(fd);
-
 	return (tab);
 }
 
@@ -99,15 +98,15 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	nelem = count_lines(argv[1]);
-	if (nelem == 0)
-		return (0);
 	tab = (char **)malloc((nelem + 1) * sizeof(char *));
 	if (tab == NULL)
 		return (0);
 	tab = fill_map(argv[1], tab);
 	if (tab == NULL)
-		return (free_tab(tab), 0);	
+		return (free_tab(tab), 0);
 	len = ft_strlen(tab[0]);
+	if (nelem == 0 || len == 0)
+		return (free_tab(tab), 0);
 	if (is_map_invalid(tab, nelem, len) == 1)
 		return (free_tab(tab), 0);
 	initialize(tab, len, nelem);

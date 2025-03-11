@@ -20,7 +20,7 @@ int	is_everything_reachable(char **tab, int nelem, size_t len)
 	char	**flooded;
 	int		i;
 
-	flooded = (char **)malloc((nelem + 1) * sizeof(char *));
+	flooded = ft_calloc((nelem + 1), sizeof(char *));
 	if (flooded == NULL)
 		return (0);
 	i = 0;
@@ -32,11 +32,9 @@ int	is_everything_reachable(char **tab, int nelem, size_t len)
 		i ++;
 	}
 	begin = get_player_pos(tab, begin);
-	ft_printf("x = %d, y = %d\n", begin.x, begin.y);
 	size.x = nelem;
 	size.y = len;
 	flooded = flood(flooded, size, begin);
-	display_map(flooded);
 	if (is_everything_flooded(flooded) == 0)
 		return (free_tab(flooded), 0);
 	return (free_tab(flooded), 1);
