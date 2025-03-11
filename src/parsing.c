@@ -31,10 +31,14 @@ static char	**fill_map(char *arg, char **tab)
 		if (line[ft_strlen(line) - 1] == '\n')
 			line[ft_strlen(line) - 2] = '\0';
 		tab[i] = ft_strdup(line);
+		free(line);
+		if (tab[i] == NULL)
+			return (free_tab(tab), NULL);
 		i ++;
 	}
 	tab[i] = NULL;
 	close(fd);
+
 	return (tab);
 }
 
@@ -53,6 +57,7 @@ static int	count_lines(char *arg)
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
+		free(line);
 		i ++;
 	}
 	close(fd);
@@ -94,10 +99,14 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	nelem = count_lines(argv[1]);
+	if (nelem == 0)
+		return (0);
 	tab = (char **)malloc((nelem + 1) * sizeof(char *));
 	if (tab == NULL)
 		return (0);
 	tab = fill_map(argv[1], tab);
+	if (tab == NULL)
+		return (free_tab(tab), 0);	
 	len = ft_strlen(tab[0]);
 	if (is_map_invalid(tab, nelem, len) == 1)
 		return (free_tab(tab), 0);
