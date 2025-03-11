@@ -51,7 +51,6 @@ Faire des maps tests pour chaque erreur.
 - Convertir les PNG en XPM via un site de conversion (https://to.imagestool.com/png-to-xpm), mettre les XPM dans les sources.
 - Donner le chemin relatif des images à **mlx_xpm_file_to_imag()** pour les charger; stocker les adresses des images.
 - Passer ces adresses à **mlx_put_image_to_window()** pour placer les images sur la fenêtre, en fonction de la map (initialiser et mettre à jour).
-- Faire en sorte que le joueur soit posé par-dessus le décor (layering): d'abord placer la tuile du fond, puis celle du joueur.
 
 # Implémenter les inputs
 Dans le header, définir les différents keycode qui nous intéressent pour le projet (A, W, S, D, Q, left arrow, up arrow, down arrow, right arrow, ESC).
