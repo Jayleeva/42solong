@@ -93,11 +93,10 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (0);
 	if (is_a_map(argv[1]) == 0 || open(argv[1], O_RDONLY) < 0)
-	{
-		write(2, "Error\nInvalid file.\n", 21);
-		return (0);
-	}
+		return (write(2, "Error\nInvalid file.\n", 21), 0);
 	nelem = count_lines(argv[1]);
+	if (nelem == 0)
+		return (write(2, "Error\nInvalid map : empty.\n", 26), 0);
 	tab = (char **)malloc((nelem + 1) * sizeof(char *));
 	if (tab == NULL)
 		return (0);
@@ -105,8 +104,6 @@ int	main(int argc, char **argv)
 	if (tab == NULL)
 		return (free_tab(tab), 0);
 	len = ft_strlen(tab[0]);
-	if (nelem == 0 || len == 0)
-		return (free_tab(tab), 0);
 	if (is_map_invalid(tab, nelem, len) == 1)
 		return (free_tab(tab), 0);
 	initialize(tab, len, nelem);

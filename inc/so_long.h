@@ -60,8 +60,8 @@
 # define PATH_WALK_RIGHT2 "./src/sprites_xpm/player_walk_right2.xpm"
 # define PATH_WALK_LEFT2 "./src/sprites_xpm/player_walk_left2.xpm"
 
-# define SET_FLOOD "0PCE"
-# define SET_MAP "10PCE"
+# define FLOOD_SET "0PCE"
+# define MAP_SET "10PCE"
 
 typedef struct s_point
 {

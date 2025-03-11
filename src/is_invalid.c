@@ -96,7 +96,7 @@ int	has_only_valid_char(char **tab)
 		j = 0;
 		while (tab[i][j])
 		{
-			if (is_in_set(SET_MAP, tab[i][j]) == 0)
+			if (is_in_set(MAP_SET, tab[i][j]) == 0)
 				return (0);
 			j ++;
 		}
