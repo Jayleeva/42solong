@@ -17,7 +17,9 @@ Transformer la map en tableau de char: utiliser **get_next_line()** une premiere
 
 # Gestion des erreurs
 Verifier si:
+- le fichier existe
 - le fichier est bien une map (.ber)
+- la map n'est pas vide
 - la map fait au minimum 3 lignes et 3 cases de largeur.
 - la map ne contient que des 1, 0, P, C, E.
 - la map est rectangulaire.
