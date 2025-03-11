@@ -29,7 +29,7 @@ static char	**fill_map(char *arg, char **tab)
 		if (line == NULL)
 			break ;
 		if (line[ft_strlen(line) - 1] == '\n')
-			line[ft_strlen(line) - 2] = '\0';
+			line[ft_strlen(line) - 1] = '\0';
 		tab[i] = ft_strdup(line);
 		free(line);
 		if (tab[i] == NULL)
@@ -92,9 +92,9 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (0);
-	if (is_a_map(argv[1]) == 0)
+	if (is_a_map(argv[1]) == 0 || open(argv[1], O_RDONLY) < 0)
 	{
-		write(2, "Error\nInvalid file : is not a map.\n", 35);
+		write(2, "Error\nInvalid file.\n", 21);
 		return (0);
 	}
 	nelem = count_lines(argv[1]);

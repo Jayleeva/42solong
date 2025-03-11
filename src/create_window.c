@@ -41,9 +41,6 @@ void	create_map(t_data *data)
 		while (data->map[x][y])
 		{
 			find_img(data, &img, data->map[x][y]);
-			if (data->map[x][y] == 'P')
-				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-					data->tiles.ground.img, y * 64, x * 64);
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 				img, y * 64, x * 64);
 			if (data->map[x][y] == 'C')
