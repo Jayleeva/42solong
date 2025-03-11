@@ -7,7 +7,7 @@ Projet du 3eme cercle du cursus 42
 3. Dessiner / trouver les sprites
 4. Transformer les 1/0/e/p/c en images
 5. Creer une nouvelle fenetre qui bouge pas si focus sur une autre / reduite
-6. Afficher les images correctement (layering, déplacements, collecte)
+6. Afficher les images correctement (déplacements, collecte)
 7. Implementer les inputs clavier avec affichage du nombre de mouvements dans terminal + fermeture correcte du programme
 8. Implementer condition de victoire: parcourir la map pour savoir combien de collectibles, tant que pas tout ramasse sortie fermee, quand tout ramasse sortie ouverte, quand sort = "you win".
 9. Creer plusieurs maps fonctionnelles
