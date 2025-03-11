@@ -30,26 +30,34 @@ int	is_in_set(char *set, char c)
 
 char	**flood(char **tab, t_point size, t_point begin)
 {
-	tab[begin.y][begin.x] = 'F';
-	if (begin.y > 0 && is_in_set(SET_FLOOD, tab[begin.y - 1][begin.x]))
+	tab[begin.x][begin.y] = 'F';
+	if (begin.y > 0 && is_in_set(SET_FLOOD, tab[begin.x][begin.y - 1]))
 	{
+		display_map(tab);
+		ft_printf("left\n");
 		begin.y = begin.y - 1;
 		flood(tab, size, begin);
 	}
 	if ((begin.y < (size.y - 1))
-		&& is_in_set(SET_FLOOD, tab[begin.y + 1][begin.x]))
+		&& is_in_set(SET_FLOOD, tab[begin.x][begin.y + 1]))
 	{
+		display_map(tab);
+		ft_printf("right\n");
 		begin.y = begin.y + 1;
 		flood(tab, size, begin);
 	}
 	if ((begin.x < (size.x - 1))
-		&& is_in_set(SET_FLOOD, tab[begin.y][begin.x + 1]))
+		&& is_in_set(SET_FLOOD, tab[begin.x + 1][begin.y]))
 	{
+		display_map(tab);
+		ft_printf("down\n");
 		begin.x = begin.x + 1;
 		flood(tab, size, begin);
 	}
-	if (begin.x > 0 && is_in_set(SET_FLOOD, tab[begin.y][begin.x - 1]))
+	if (begin.x > 0 && is_in_set(SET_FLOOD, tab[begin.x - 1][begin.y]))
 	{
+		display_map(tab);
+		ft_printf("up\n");
 		begin.x = begin.x - 1;
 		flood(tab, size, begin);
 	}

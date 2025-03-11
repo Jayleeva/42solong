@@ -111,4 +111,5 @@ int	main(int argc, char **argv)
 	if (is_map_invalid(tab, nelem, len) == 1)
 		return (free_tab(tab), 0);
 	initialize(tab, len, nelem);
+	free_tab(tab);
 }

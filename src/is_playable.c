@@ -32,12 +32,14 @@ int	is_everything_reachable(char **tab, int nelem, size_t len)
 		i ++;
 	}
 	begin = get_player_pos(tab, begin);
-	size.x = len;
-	size.y = nelem;
+	ft_printf("x = %d, y = %d\n", begin.x, begin.y);
+	size.x = nelem;
+	size.y = len;
 	flooded = flood(flooded, size, begin);
+	display_map(flooded);
 	if (is_everything_flooded(flooded) == 0)
 		return (free_tab(flooded), 0);
-	return (1);
+	return (free_tab(flooded), 1);
 }
 
 static int	has_elem_util(int count, char c)

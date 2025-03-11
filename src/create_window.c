@@ -67,7 +67,6 @@ int	initialize(char **tab, size_t len, int nelem)
 		return (free(data.mlx_ptr), 1);
 	load_images(&data);
 	data.map = tab;
-	//free_tab(tab);
 	create_map(&data);
 	data.was_carot = 0;
 	data.was_exit = 0;
