@@ -46,8 +46,10 @@ Faire des maps tests pour chaque erreur.
 # Créer une nouvelle fenêtre
 - Créer une structure qui comportera toutes les variables que vous devrez passer dans l'essentiel des fonctions: un pointeur sur la mlx (ex. void * mlx_ptr), un pointeur sur la fenetre (ex. void *win_ptr), et toutes celles que vous estimerez necessaires.
 - Faire une fonction qui appelle **mlx_init()** sur le mlx_ptr de la structure pour initialiser la mlx.
-- Puis qui appelle **mlx_new_window()** sur le win_ptr de la structure pour creer la nouvelle fenetre. La taille de la fenetre = la taille de votre map, soit pour la hauteur le nombre de lignes * la hauteur d'une de vos tuile et pour la largeur le nombre de colonnes * la largeur d'une de vos tuiles. Prevoyez de l'espace en plus si vous souhaitez afficher le nombre de mouvements directement sur la fenetre?
+- Puis qui appelle **mlx_new_window()** sur le win_ptr de la structure pour creer la nouvelle fenetre. 
 - Puis qui appelle **mlx_loop()** sur le mlx_ptr de la structure pour faire tourner le programme à l'infini, jusqu'au exit().
+
+La taille de la fenetre = la taille de votre map, soit pour la hauteur le nombre de lignes * la hauteur d'une de vos tuile et pour la largeur le nombre de colonnes * la largeur d'une de vos tuiles. Prevoyez de l'espace en plus si vous souhaitez afficher le nombre de mouvements directement sur la fenetre?
 
 # Poser les images
 - Convertir les PNG en XPM via un site de conversion (https://to.imagestool.com/png-to-xpm), mettre les XPM dans les sources.
