@@ -12,6 +12,8 @@ Projet du 3eme cercle du cursus 42
 8. Implementer condition de victoire: parcourir la map pour savoir combien de collectibles, tant que pas tout ramasse sortie fermee, quand tout ramasse sortie ouverte.
 9. Creer plusieurs maps fonctionnelles
 
+**Remarque**: j'ai du utiliser **ft_calloc()** au lieu de **malloc()** pour faire taire un warning de Valgrind. Il estimait que certaines variables pouvaient, en cas d'erreur, ne pas etre initialisees, ce qui peut mener a des resultats inattendus car une variable non initialisee va prendre la valeur qu'elle trouve par defaut dans la memoire.
+
 # Parsing
 Transformer la map en tableau de char: utiliser **get_next_line()** une premiere fois pour compter le nombre de lignes et allouer la taille du tableau, puis reutiliser **get_next_line()** pour allouer la taille de chaque ligne et les remplir avec **ft_strdup()**, en changeant les '\n' à la fin de chaque ligne en '\0'. Fermer le fichier a la fin des deux get_next_line(); faire les deux dans des fonctions differentes pour ne pas avoir besoin de fseek(), puisque pas autorise.
 
