@@ -96,7 +96,7 @@ Dans mon projet, j'ai choisi de faire en sorte qu'un trou remplace les collectib
 **Case de depart**
 - Verifier si la case de depart est un collectible ramasse (was_collectible == 1): si c'est le cas, on repasse was_collectible a 0, on affiche l'image d'un collectible ramasse par-dessus celle du joueur, et on met a jour la map (map[x][y] = 'c').
 - Sinon, verifier si la case de depart est la sortie (was_exit == 1): si c'est le cas, on repasse was_exit a 0, on affiche l'image de la sortie par-dessus celle du joueur, et on met a jour la map (map[x][y] = 'E').
-- Sinon: on affiche l'image d'un sol simple par-dessus celle du joueur, et on met a jour la map (map[x][y] = 0).
+- Sinon: on affiche l'image d'un sol simple par-dessus celle du joueur, et on met a jour la map (map[x][y] = '0').
 
 **Case d'arrivee**
 - On affiche l'image du joueur par-dessus celle de la case d'arrivee. Dans mon projet, l'image exacte depend de la direction prise par le joueur (gauche, droite, haut, bas) et d'une boucle qui s'incremente a chaque mouvement puis revient a 0 une fois le max atteint.
