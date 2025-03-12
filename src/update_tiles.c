@@ -43,7 +43,6 @@ void	update_new_tile(t_data *data, t_point pos)
 {
 	if (data->map[pos.x][pos.y] == 'C')
 	{
-		data->was_carot = 1;
 		data->map[pos.x][pos.y] = 'c';
 		data->c_remaining --;
 	}
