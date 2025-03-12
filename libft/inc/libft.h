@@ -54,6 +54,7 @@ char	*ft_strdup(const char *src);
 //fonctions absentes/differentes de la libc
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
+int	is_in_set(char const *set, char c);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const*s, char c);
 char	*ft_itoa(int n);
