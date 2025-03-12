@@ -84,7 +84,7 @@ Définir **on_destroy()**:
 - Utiliser une structure pour gerer les positions (ex. t_pos: int x, int y): evite de recreer deux variables dans chaque fonction qui en a besoin et de devoir eventuellement les passer en arguments.
 - Faire une fonction qui met a jour la case de depart et une autre qui met a jour la case d'arrivee
 
-Dans mon projet, j'ai choisi de faire en sorte qu'un trou remplace les collectibles ramasses (des carottes), et qu'il reste meme si le joueur repasse dessus. A cause de cela, j'ai du implementer des conditions et donc des variables supplementaires. J'ai aussi choisi de pouvoir marcher sur la sortie (ne bloque pas le joueur).
+Dans mon projet, j'ai choisi de faire en sorte qu'un trou remplace les collectibles ramasses (des carottes), et qu'il reste meme si le joueur repasse dessus. A cause de cela, j'ai du implementer des conditions et donc des variables supplementaires. J'ai aussi choisi de pouvoir marcher sur la sortie (ne bloque pas le joueur). Enfin, j'ai choisi de faire des pseudo-animations, en faisant tourner en boucle plusieurs frames pour chaque direction prise par le joueur.
 
 **Case de depart**
 - Verifier si la case de depart est un collectible ramasse (was_collectible == 1): si c'est le cas, on affiche l'image d'un collectible ramasse par-dessus celle du joueur, et on met a jour la map (map[x][y] = 'c').
@@ -92,7 +92,7 @@ Dans mon projet, j'ai choisi de faire en sorte qu'un trou remplace les collectib
 - Sinon: on affiche l'image d'un sol simple par-dessus celle du joueur, et on met a jour la map (map[x][y] = 0).
 
 **Case d'arrivee**
-- On affiche l'image du joueur par-dessus celle de la case d'arrivee.
+- On affiche l'image du joueur par-dessus celle de la case d'arrivee. Dans mon projet, l'image exacte depend de la direction prise par le joueur (gauche, droite, haut, bas) et d'une boucle qui s'incremente a chaque mouvement puis revient a 0 une fois le max atteint.
 - Verifier si la case d'arrivee est un collectible (map[x][y] == 'C'): si c'est le cas, on decremente le nombre de collectible restants et on met a jour la map (map[x][y] = 'c').
 - Verifier si la case d'arrivee est un collectible ramasse (map[x][y] == 'c'): si c'est le cas, on passe was_collectible a 1.
 - Sinon, verifier si la case d'arrivee est la sortie (map[x][y] == 'E'): si c'est le cas,
