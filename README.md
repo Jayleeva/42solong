@@ -80,7 +80,7 @@ Définir **on_destroy()**:
 - Mettre à jour le tableau de la map, en déplaçant le P dans la nouvelle case et remettant l'ancien char dans la case précédente, une fois que le contenu de la nouvelle case a été analysée.
 - Réafficher les images correspondantes.
 
-## Mettre a jour les images
+## Mettre a jour les images et la map
 - Utiliser une structure pour gerer les positions (ex. t_pos: int x, int y): evite de recreer deux variables dans chaque fonction qui en a besoin et de devoir eventuellement les passer en arguments.
 - Faire une fonction qui met a jour la case de depart et une autre qui met a jour la case d'arrivee
 
@@ -99,8 +99,3 @@ Dans mon projet, j'ai choisi de faire en sorte qu'un trou remplace les collectib
   - verifier si tous les collectibles ont ete ramasses: si c'est le cas, on appele **on_destroy()**.
   - Sinon, on passe was_exit a 1.
 - On met a jour la map (map[x][y] = 'P').
-  
-# Condition de victoire
-- Au moment de la génération de la map, compter le nombre de collectibles: incrémenter une variable de la structure principale.
-- Décrémenter celle-ci à chaque fois que la nouvelle case sur laquelle arrive le joueur contient un 'C'.
-- Quand le joueur arrive sur la case de sortie, vérifier si la variable est à 0. Si oui, fermer le jeu: victoire! Sinon, quand le joueur quitte la case, y remettre une image de sortie.
