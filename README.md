@@ -76,7 +76,7 @@ Définir **on_destroy()**:
 - Libérer la mémoire avec **free()** (ne rien oublier!! attention aux returns!!)
 - Utiliser **exit()** pour fermer le programme correctement (sans cela, la loop segfault).
 
-# Gérer les mouvements en bref
+# Gérer les mouvements
 - Mettre à jour le tableau de la map, en déplaçant le P dans la nouvelle case et remettant l'ancien char dans la case précédente, une fois que le contenu de la nouvelle case a été analysée.
 - Réafficher les images correspondantes.
 
