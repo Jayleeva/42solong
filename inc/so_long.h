@@ -110,7 +110,6 @@ typedef struct s_data
 	t_tiles	tiles;
 }			t_data;
 
-int		is_in_set(char *set, char c);
 char	**flood(char **tab, t_point size, t_point begin);
 int		is_everything_flooded(char **map);
 int		is_everything_reachable(char **tab, int nelem, size_t len);
