@@ -54,7 +54,9 @@ La taille de la fenetre = la taille de votre map, soit pour la hauteur le nombre
 # Poser les images
 - Convertir les PNG en XPM via un site de conversion (https://to.imagestool.com/png-to-xpm), mettre les XPM dans les sources.
 - Donner le chemin relatif des images à **mlx_xpm_file_to_imag()** pour les charger; stocker les adresses des images grace a la structure t_img de la mlx.
-- Passer ces adresses à **mlx_put_image_to_window()** pour placer les images sur la fenêtre, en fonction de la map.
+- Passer ces adresses à **mlx_put_image_to_window()** pour placer les tuiles sur la fenêtre, en fonction de la map.
+
+**Remarque:** personnellement, j'ai du inverser les axes x et y au moment d'afficher les tuiles en fonction de la map.
 
 # Implémenter les inputs
 Dans le header, définir les différents keycode linux qui nous intéressent pour le projet (A, W, S, D, Q, left arrow, up arrow, down arrow, right arrow, ESC).
