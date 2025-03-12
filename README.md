@@ -46,7 +46,7 @@ Faire des maps tests pour chaque erreur.
 # Créer une nouvelle fenêtre
 - Créer une structure qui comportera toutes les variables que vous devrez passer dans l'essentiel des fonctions: un pointeur sur la mlx (ex. void * mlx_ptr), un pointeur sur la fenetre (ex. void *win_ptr), et toutes celles que vous estimerez necessaires.
 - Faire une fonction qui appelle **mlx_init()** sur le mlx_ptr de la structure pour initialiser la mlx.
-- Puis qui appelle **mlx_new_window()** sur le win_ptr de la structure pour creer la nouvelle fenetre.
+- Puis qui appelle **mlx_new_window()** sur le win_ptr de la structure pour creer la nouvelle fenetre. La taille de la fenetre = la taille de votre map, soit pour la hauteur le nombre de lignes * la hauteur d'une de vos tuile et pour la largeur le nombre de colonnes * la largeur d'une de vos tuiles. Prevoyez de l'espace en plus si vous souhaitez afficher le nombre de mouvements directement sur la fenetre?
 - Puis qui appelle **mlx_loop()** sur le mlx_ptr de la structure pour faire tourner le programme à l'infini, jusqu'au exit().
 
 # Poser les images
@@ -81,6 +81,7 @@ Définir **on_destroy()**:
 # Gérer les mouvements
 - Mettre à jour le tableau de la map, en déplaçant le P dans la nouvelle case et remettant l'ancien char dans la case précédente, une fois que le contenu de la nouvelle case a été analysée.
 - Réafficher les images correspondantes.
+- Incrementer le nombre de mouvement et l'afficher dans le terminal / sur la fenetre.
 
 ## Mettre a jour les images et la map
 - Utiliser une structure pour gerer les positions (ex. t_pos: int x, int y): evite de recreer deux variables dans chaque fonction qui en a besoin et de devoir eventuellement les passer en arguments.
