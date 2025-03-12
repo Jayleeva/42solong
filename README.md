@@ -94,8 +94,8 @@ Définir **on_destroy()**:
 Dans mon projet, j'ai choisi de faire en sorte qu'un trou remplace les collectibles ramasses (des carottes), et qu'il reste meme si le joueur repasse dessus. A cause de cela, j'ai du implementer des conditions et donc des variables supplementaires. J'ai aussi choisi de pouvoir marcher sur la sortie (ne bloque pas le joueur). Enfin, j'ai choisi de faire des pseudo-animations, en faisant tourner en boucle plusieurs frames pour chaque direction prise par le joueur.
 
 **Case de depart**
-- Verifier si la case de depart est un collectible ramasse (was_collectible == 1): si c'est le cas, on affiche l'image d'un collectible ramasse par-dessus celle du joueur, et on met a jour la map (map[x][y] = 'c').
-- Sinon, verifier si la case de depart est la sortie (was_exit == 1): si c'est le cas, on affiche l'image de la sortie par-dessus celle du joueur, et on met a jour la map (map[x][y] = 'E').
+- Verifier si la case de depart est un collectible ramasse (was_collectible == 1): si c'est le cas, on repasse was_collectible a 0, on affiche l'image d'un collectible ramasse par-dessus celle du joueur, et on met a jour la map (map[x][y] = 'c').
+- Sinon, verifier si la case de depart est la sortie (was_exit == 1): si c'est le cas, on repasse was_exit a 0, on affiche l'image de la sortie par-dessus celle du joueur, et on met a jour la map (map[x][y] = 'E').
 - Sinon: on affiche l'image d'un sol simple par-dessus celle du joueur, et on met a jour la map (map[x][y] = 0).
 
 **Case d'arrivee**
