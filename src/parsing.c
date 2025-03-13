@@ -91,7 +91,7 @@ int	main(int argc, char **argv)
 	int		nelem;
 
 	if (argc != 2)
-		return (0);
+		return (write(2, "Error\nUse format : ./so_long <map.ber>\n", 40), 0);
 	if (is_a_map(argv[1]) == 0 || open(argv[1], O_RDONLY) < 0)
 		return (write(2, "Error\nInvalid file.\n", 21), 0);
 	nelem = count_lines(argv[1]);

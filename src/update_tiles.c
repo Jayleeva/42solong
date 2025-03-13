@@ -38,6 +38,7 @@ void	update_last_tile(t_data *data, t_point pos)
 			data->tiles.ground.img, pos.y * 64, pos.x * 64);
 	}
 }
+
 void	update_new_tile(t_data *data, t_point pos)
 {
 	if (data->map[pos.x][pos.y] == 'C')
