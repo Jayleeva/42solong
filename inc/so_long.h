@@ -107,6 +107,7 @@ typedef struct s_data
 	int		c_remaining;
 	int		was_carot;
 	int		was_exit;
+	int		load_successful;
 	t_tiles	tiles;
 }			t_data;
 
