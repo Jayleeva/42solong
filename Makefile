@@ -2,7 +2,7 @@ NAME = so_long
 LIBFT = libft
 LIBFT_DIR := ./libft
 LIBFT_LIB := $(LIBFT_DIR)/$(LIBFT)
-MLX_DIR = ./minilibx_linux
+MLX_DIR = ./minilibx-linux
 MLX_LIB = $(MLX_DIR)/libmlx.a
 
 SRC_DIR = ./src
