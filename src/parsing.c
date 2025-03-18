@@ -13,37 +13,6 @@
 #include "so_long.h"
 #include "libft.h"
 
-static char	**fill_map(char *arg, char **tab)
-{
-	int		fd;
-	char	*line;
-	int		i;
-
-	fd = open(arg, O_RDONLY);
-	if (fd < 0)
-		return (tab);
-	i = 0;
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		if (line[ft_strlen(line) - 1] == '\n')
-			line[ft_strlen(line) - 1] = '\0';
-		tab[i] = ft_strdup(line);
-		free(line);
-		if (tab[i] == NULL)
-		{
-			free_tab_rev(tab, i);
-			break ;
-		}
-		i ++;
-	}
-	tab[i] = NULL;
-	close(fd);
-	return (tab);
-}
-
 static int	count_lines_2(char **tab)
 {
 	int		i;
@@ -56,16 +25,12 @@ static int	count_lines_2(char **tab)
 	return (i);
 }
 
-static int	count_lines(char *arg)
+static int	count_lines(int fd)
 {
 	int		i;
 	char	*line;
 	char	*tmp;
-	int		fd;
 
-	fd = open(arg, O_RDONLY);
-	if (fd < 0)
-		return (0);
 	i = 0;
 	line = get_next_line(fd);
 	if (!line)
@@ -84,7 +49,7 @@ static int	count_lines(char *arg)
 	return (i);
 }
 
-int	is_a_map(char *filename)
+static int	is_a_map(char *filename)
 {
 	size_t	i;
 	size_t	j;
@@ -105,23 +70,36 @@ int	is_a_map(char *filename)
 	return (1);
 }
 
+static char	**prep_map(int fd)
+{
+	char	**tab;
+	int		nelem;
+
+	tab = NULL;
+	nelem = count_lines(fd);
+	if (nelem == 0)
+		return (write(2, "Error\nInvalid map : empty.\n", 26), tab);
+	tab = (char **)malloc((nelem + 1) * sizeof(char *));
+	if (tab == NULL)
+		return (tab);
+	tab = fill_map(fd, tab);
+	return (tab);
+}
+
 int	main(int argc, char **argv)
 {
 	char	**tab;
 	size_t	len;
 	int		nelem;
+	int		fd;
 
 	if (argc != 2)
 		return (write(2, "Error\nUse format : ./so_long <map.ber>\n", 40), 1);
-	if (is_a_map(argv[1]) == 0 || open(argv[1], O_RDONLY) < 0)
+	fd = open(argv[1], O_RDONLY);
+	if (is_a_map(argv[1]) == 0 || fd < 0)
 		return (write(2, "Error\nInvalid file.\n", 21), 1);
-	nelem = count_lines(argv[1]);
-	if (nelem == 0)
-		return (write(2, "Error\nInvalid map : empty.\n", 26), 1);
-	tab = (char **)malloc((nelem + 1) * sizeof(char *));
-	if (tab == NULL)
-		return (1);
-	tab = fill_map(argv[1], tab);
+	tab = prep_map(fd);
+	close(fd);
 	if (tab[0] == NULL)
 		return (free(tab), 1);
 	len = ft_strlen(tab[0]);

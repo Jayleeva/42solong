@@ -111,12 +111,12 @@ typedef struct s_data
 	t_tiles	tiles;
 }			t_data;
 
+char	**fill_map(int fd, char **tab);
 void	free_tab_rev(char **tab, int i);
 char	**flood(char **tab, t_point size, t_point begin);
 int		is_everything_flooded(char **map);
 int		is_everything_reachable(char **tab, int nelem, size_t len);
 int		has_elem(char **tab, char c);
-void	display_map(char **tab);
 int		is_map_invalid(char **tab, int nelem, size_t len);
 void	initialize(char **tab, size_t len, int nelem);
 void	load_images(t_data *data);
