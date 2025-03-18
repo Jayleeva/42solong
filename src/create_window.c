@@ -51,27 +51,63 @@ void	create_map(t_data *data)
 	}
 }
 
-int	initialize(char **tab, size_t len, int nelem)
+static void	initialize_images(t_data *data)
+{
+	data->tiles.wall.img = NULL;
+	data->tiles.ground.img = NULL;
+	data->tiles.collectible.img = NULL;
+	data->tiles.collected.img = NULL;
+	data->tiles.exit.img = NULL;
+	data->tiles.idle_down.img = NULL;
+	data->tiles.idle_left.img = NULL;
+	data->tiles.idle_right.img = NULL;
+	data->tiles.idle_up.img = NULL;
+	data->tiles.walk_down0.img = NULL;
+	data->tiles.walk_left0.img = NULL;
+	data->tiles.walk_right0.img = NULL;
+	data->tiles.walk_up0.img = NULL;
+	data->tiles.walk_down1.img = NULL;
+	data->tiles.walk_left1.img = NULL;
+	data->tiles.walk_right1.img = NULL;
+	data->tiles.walk_up1.img = NULL;
+	data->tiles.walk_down2.img = NULL;
+	data->tiles.walk_left2.img = NULL;
+	data->tiles.walk_right2.img = NULL;
+	data->tiles.walk_up2.img = NULL;
+}
+
+static void	init(t_data *data)
+{
+	data->mlx_ptr = NULL;
+	data->win_ptr = NULL;
+	data->map = NULL;
+	data->c_remaining = -1;
+	data->was_carrot = -1;
+	data->was_exit = -1;
+	data->load_successful = -1;
+	initialize_images(data);
+}
+
+void	initialize(char **tab, size_t len, int nelem)
 {
 	t_data	data;
 
+	init(&data);
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
-		return (1);
+		on_destroy(&data);
 	data.win_ptr = mlx_new_window(data.mlx_ptr, (int)len * 64,
 			nelem * 64, "So long");
 	if (!data.win_ptr)
-		return (free(data.mlx_ptr), 1);
+		on_destroy(&data);
 	load_images(&data);
-	if (data.load_successful == 0)
-		return (free(data.mlx_ptr), 1);
 	data.map = tab;
 	create_map(&data);
-	data.was_carot = 0;
+	data.was_carrot = 0;
 	data.was_exit = 0;
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
 	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy,
 		&data);
 	mlx_loop(data.mlx_ptr);
-	return (free(data.mlx_ptr), 0);
+	on_destroy(&data);
 }

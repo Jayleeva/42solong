@@ -66,13 +66,13 @@ static int	is_surrounded_by_walls(char **tab, int nelem, size_t len)
 	return (1);
 }
 
-static int	is_rectangular(char **tab, int nelem, size_t len)
+static int	is_rectangular(char **tab, size_t len)
 {
 	int		i;
 	size_t	j;
 
 	i = 1;
-	while (nelem -1)
+	while (tab[i])
 	{
 		j = 0;
 		while (tab[i][j])
@@ -80,7 +80,6 @@ static int	is_rectangular(char **tab, int nelem, size_t len)
 		if (len != j)
 			return (0);
 		i ++;
-		nelem --;
 	}
 	return (1);
 }
@@ -117,7 +116,7 @@ int	is_map_invalid(char **tab, int nelem, size_t len)
 		write(2, "Error\nInvalid char in map.\n", 27);
 		return (1);
 	}
-	if (is_rectangular(tab, nelem, len) == 0)
+	if (is_rectangular(tab, len) == 0)
 	{
 		write(2, "Error\nInvalid map : is not rectangular.\n", 40);
 		return (1);

@@ -6,13 +6,13 @@ MLX_DIR = ./minilibx-linux
 MLX_LIB = $(MLX_DIR)/libmlx.a
 
 SRC_DIR = ./src
-SRC = parsing.c is_invalid.c is_playable.c is_playable_utils.c create_window.c load_images.c inputs.c move.c update_tiles.c
+SRC = free_tab_rev.c parsing.c is_invalid.c is_playable.c is_playable_utils.c create_window.c load_images.c destroy_images.c inputs.c move.c update_tiles.c
 OBJ = $(SRC:.c=.o)
 
 SRC := $(addprefix $(SRC_DIR)/, $(SRC))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I ./inc -I ./libft/inc
+CFLAGS = -Wall -Wextra -Werror -I ./inc -I ./libft/inc -g
 MLX_FLAGS = -lXext -lX11
 INCLUDES = -I/usr/include -Imlx
 

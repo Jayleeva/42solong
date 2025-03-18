@@ -17,14 +17,19 @@ void	load_image(t_data *data, t_image *tile, char *path, void *mlx_ptr)
 {
 	int	img_width;
 	int	img_height;
+	int	fd;
 
-	if (open(path, O_RDONLY) < 0)
-	{
-		data->load_successful = 0;
-		return ;
-	}
-	data->load_successful = 1;
+	img_width = 0;
+	img_height = 0;
+	data->load_successful = 0;
+	fd = open(path, O_RDONLY) < 0;
+	if (fd < 0)
+		on_destroy(data);
+	close(fd);
 	tile->img = mlx_xpm_file_to_image(mlx_ptr, path, &img_width, &img_height);
+	if (!tile->img)
+		on_destroy(data);
+	data->load_successful = 1;
 	(tile->img)->width = img_width;
 	(tile->img)->height = img_height;
 }

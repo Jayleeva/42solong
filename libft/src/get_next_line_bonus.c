@@ -6,7 +6,7 @@
 /*   By: cyglardo <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 12:16:25 by cyglardo          #+#    #+#             */
-/*   Updated: 2024/11/28 17:00:03 by cyglardo         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:05:53 by cyglardo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static char	*read_line(int fd, char *stash)
 		temp = stash;
 		stash = ft_strjoin(stash, buffer);
 		free(temp);
+		if (!stash)
+			return (NULL);
 	}
 	free(buffer);
 	return (stash);
@@ -45,10 +47,14 @@ static char	*extract_line(char *stash, int eol)
 	if (stash[eol] == '\0')
 	{
 		line = ft_strdup(stash);
+		if (!line)
+			return (NULL);
 		stash = NULL;
 		return (line);
 	}
 	line = ft_substr(stash, 0, eol +1);
+	if (!line)
+		return (NULL);
 	return (line);
 }
 
@@ -59,6 +65,8 @@ char	*update_stash(char *stash, int eol)
 	temp = stash;
 	stash = ft_substr(stash, eol +1, ft_strlen_(stash) - eol);
 	free(temp);
+	if (!stash)
+		return (NULL);
 	return (stash);
 }
 
@@ -80,7 +88,11 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	if (stash[fd] == NULL)
+	{
 		stash[fd] = ft_strdup("");
+		if (!stash[fd])
+			return (NULL);
+	}
 	stash[fd] = read_line(fd, stash[fd]);
 	if (!stash[fd] || !*stash[fd])
 		return (free(stash[fd]), stash[fd] = NULL, NULL);

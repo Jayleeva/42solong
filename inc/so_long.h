@@ -105,24 +105,26 @@ typedef struct s_data
 	void	*win_ptr;
 	char	**map;
 	int		c_remaining;
-	int		was_carot;
+	int		was_carrot;
 	int		was_exit;
 	int		load_successful;
 	t_tiles	tiles;
 }			t_data;
 
+void	free_tab_rev(char **tab, int i);
 char	**flood(char **tab, t_point size, t_point begin);
 int		is_everything_flooded(char **map);
 int		is_everything_reachable(char **tab, int nelem, size_t len);
 int		has_elem(char **tab, char c);
 void	display_map(char **tab);
 int		is_map_invalid(char **tab, int nelem, size_t len);
-int		initialize(char **tab, size_t len, int nelem);
+void	initialize(char **tab, size_t len, int nelem);
 void	load_images(t_data *data);
 void	update_last_tile(t_data *data, t_point pos);
 void	update_new_tile(t_data *data, t_point pos);
 void	ft_move(t_data *data, char move);
 t_point	get_player_pos(char **tab, t_point pos);
+void	destroy_images(t_data *data);
 int		on_keypress(int keycode, t_data *data);
 int		on_destroy(t_data *data);
 

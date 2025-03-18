@@ -7,7 +7,7 @@ OBJ = $(SRC:.c=.o)
 SRC := $(addprefix $(SRC_DIR)/, $(SRC))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror -g
 
 all: $(NAME)
 
