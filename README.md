@@ -1,36 +1,35 @@
-# 42solong
-Projet du 3eme cercle du cursus 42
+Projet du 3ème cercle du cursus 42
 
-# Strategie
+# Stratégie
 1. Parsing d'une map
 2. Gestion des erreurs (map invalide)
 3. Dessiner / trouver les sprites
 4. Transformer les 1/0/e/p/c en images
-5. Creer une nouvelle fenetre qui bouge pas si focus sur une autre / reduite
+5. Créer une nouvelle fenêtre qui bouge pas si focus sur une autre / réduite
 6. Afficher les images correctement (déplacements, collecte)
-7. Implementer les inputs clavier avec affichage du nombre de mouvements dans terminal + fermeture correcte du programme
-8. Implementer condition de victoire: parcourir la map pour savoir combien de collectibles, tant que pas tout ramasse sortie fermee, quand tout ramasse sortie ouverte.
-9. Creer plusieurs maps fonctionnelles
+7. Implémenter les inputs clavier avec affichage du nombre de mouvements dans terminal + fermeture correcte du programme
+8. Implémenter condition de victoire: parcourir la map pour savoir combien de collectibles, tant que pas tout ramassé sortie fermée, quand tout ramassé sortie ouverte.
+9. Créer plusieurs maps fonctionnelles
 
-**Remarque**: j'ai du utiliser **ft_calloc()** au lieu de **malloc()** pour faire taire un warning de Valgrind. Il estimait que certaines variables pouvaient, en cas d'erreur, ne pas etre initialisees, ce qui peut mener a des resultats inattendus car une variable non initialisee va prendre la valeur qu'elle trouve par defaut dans la memoire.
+**Remarque**: j'ai du utiliser **ft_calloc()** au lieu de **malloc()** pour faire taire un warning de Valgrind. Il estimait que certaines variables pouvaient, en cas d'erreur, ne pas être initialisées, ce qui peut mener à des resultats inattendus car une variable non initialisée va prendre la valeur qu'elle trouve par défaut dans la mémoire.
 
 # Parsing
-Transformer la map en tableau de char: utiliser **get_next_line()** une premiere fois pour compter le nombre de lignes et allouer la taille du tableau, puis reutiliser **get_next_line()** pour allouer la taille de chaque ligne et les remplir avec **ft_strdup()**, en changeant les '\n' à la fin de chaque ligne en '\0'. Fermer le fichier a la fin des deux get_next_line(); faire les deux dans des fonctions differentes pour ne pas avoir besoin de fseek(), puisque pas autorise.
+Transformer la map en tableau de char: utiliser **get_next_line()** une première fois pour compter le nombre de lignes et allouer la taille du tableau, puis réutiliser **get_next_line()** pour allouer la taille de chaque ligne et les remplir avec **ft_strdup()**, en changeant les '\n' à la fin de chaque ligne en '\0'. Fermer le fichier à la fin des deux get_next_line(); faire les deux dans des fonctions différentes pour ne pas avoir besoin de fseek(), puisque pas autorisé.
 
 # Gestion des erreurs
-Verifier si:
-- le fichier existe (eviter les segfault!)
+Vérifier si:
+- le fichier existe (éviter les segfault!)
 - le fichier est bien une map (.ber)
-- la map n'est pas vide (eviter les segfault!)
+- la map n'est pas vide (éviter les segfault!)
 - la map fait au minimum 3 lignes et 3 cases de largeur.
 - la map ne contient que des 1, 0, P, C, E.
 - la map est rectangulaire.
-- la map est entouree de murs (1).
+- la map est entourée de murs (1).
 - la map est jouable:
   - la map a un seul joueur (P)
   - la map a une seule sortie (E)
   - la map a au moins 1 collectible (C)
-  - chaque element est atteignable par le joueur (utiliser flood)
+  - chaque élément est atteignable par le joueur (utiliser flood)
 
 Faire des maps tests pour chaque erreur.
 
@@ -39,21 +38,21 @@ Faire des maps tests pour chaque erreur.
 - Le transparent n'est pas géré par la minilibx pour linux. On peut remplacer le transparent par la couleur de son choix, mais c'est tout. Oui, c'est moche.
 
 # Implémenter la minilibx
-- Sur linux: telecharger le fichier minilibx-linux.tgz.
-- Extraire deux fois; copier/deplacer extrait dans les fichiers du projet, supprimer le git, gitignore, .git de la mini.
-- Inclure la mlx dans le .h et le Makefile (attention, deux headers a inclure + des flags specifiques + d'abord compiler la mlx puis le projet)
+- Sur linux: télécharger le fichier minilibx-linux.tgz.
+- Extraire deux fois; copier/déplacer extrait dans les fichiers du projet, supprimer le git, gitignore, .git de la mini.
+- Inclure la mlx dans le .h et le Makefile (attention, deux headers à inclure + des flags spécifiques + d'abord compiler la mlx puis le projet)
 
 # Créer une nouvelle fenêtre
-- Créer une structure qui comportera toutes les variables que vous devrez passer dans l'essentiel des fonctions: un pointeur sur la mlx (ex. void * mlx_ptr), un pointeur sur la fenetre (ex. void *win_ptr), et toutes celles que vous estimerez necessaires.
+- Créer une structure qui comportera toutes les variables que vous devrez passer dans l'essentiel des fonctions: un pointeur sur la mlx (ex. void * mlx_ptr), un pointeur sur la fenêtre (ex. void *win_ptr), et toutes celles que vous estimerez necessaires.
 - Faire une fonction qui appelle **mlx_init()** sur le mlx_ptr de la structure pour initialiser la mlx.
-- Puis qui appelle **mlx_new_window()** sur le win_ptr de la structure pour creer la nouvelle fenetre. 
+- Puis qui appelle **mlx_new_window()** sur le win_ptr de la structure pour créer la nouvelle fenêtre. 
 - Puis qui appelle **mlx_loop()** sur le mlx_ptr de la structure pour faire tourner le programme à l'infini, jusqu'au exit().
 
-La taille de la fenetre = la taille de votre map, soit pour la hauteur le nombre de lignes * la hauteur d'une de vos tuile et pour la largeur le nombre de colonnes * la largeur d'une de vos tuiles. 
+La taille de la fenêtre = la taille de votre map, soit pour la hauteur le nombre de lignes * la hauteur d'une de vos tuiles et pour la largeur le nombre de colonnes * la largeur d'une de vos tuiles. 
 
 # Poser les images
 - Convertir les PNG en XPM via un site de conversion (https://to.imagestool.com/png-to-xpm), mettre les XPM dans les sources.
-- Donner le chemin relatif des images à **mlx_xpm_file_to_imag()** pour les charger; stocker les adresses des images grace a la structure t_img de la mlx.
+- Donner le chemin relatif des images à **mlx_xpm_file_to_imag()** pour les charger; stocker les adresses des images grâce à la structure t_img de la mlx.
 - Passer ces adresses à **mlx_put_image_to_window()** pour placer les tuiles sur la fenêtre, en fonction de la map.
 
 **Remarque:** personnellement, j'ai du inverser les axes x et y au moment d'afficher les tuiles en fonction de la map.
@@ -85,24 +84,24 @@ Définir **on_destroy()**:
 # Gérer les mouvements
 - Mettre à jour le tableau de la map, en déplaçant le P dans la nouvelle case et remettant l'ancien char dans la case précédente, une fois que le contenu de la nouvelle case a été analysée.
 - Réafficher les images correspondantes.
-- Incrementer le nombre de mouvement et l'afficher dans le terminal / sur la fenetre.
+- Incrémenter le nombre de mouvement et l'afficher dans le terminal / sur la fenêtre.
 
-## Mettre a jour les images et la map
-- Utiliser une structure pour gerer les positions (ex. t_pos: int x, int y): evite de recreer deux variables dans chaque fonction qui en a besoin et de devoir eventuellement les passer en arguments.
-- Faire une fonction qui met a jour la case de depart et une autre qui met a jour la case d'arrivee
+## Mettre à jour les images et la map
+- Utiliser une structure pour gérer les positions (ex. t_pos: int x, int y): évite de recréer deux variables dans chaque fonction qui en a besoin et de devoir éventuellement les passer en arguments.
+- Faire une fonction qui met à jour la case de départ et une autre qui met à jour la case d'arrivée
 
-Dans mon projet, j'ai choisi de faire en sorte qu'un trou remplace les collectibles ramasses (des carottes), et qu'il reste meme si le joueur repasse dessus. A cause de cela, j'ai du implementer des conditions et donc des variables supplementaires. J'ai aussi choisi de pouvoir marcher sur la sortie (ne bloque pas le joueur). Enfin, j'ai choisi de faire des pseudo-animations, en faisant tourner en boucle plusieurs frames pour chaque direction prise par le joueur.
+Dans mon projet, j'ai choisi de faire en sorte qu'un trou remplace les collectibles ramassés (des carottes), et qu'il reste même si le joueur repasse dessus. A cause de cela, j'ai du implémenter des conditions et donc des variables supplémentaires. J'ai aussi choisi de pouvoir marcher sur la sortie (ne bloque pas le joueur). Enfin, j'ai choisi de faire des pseudo-animations, en faisant tourner en boucle plusieurs frames pour chaque direction prise par le joueur.
 
-**Case de depart**
-- Verifier si la case de depart est un collectible ramasse (was_collectible == 1): si c'est le cas, on repasse was_collectible a 0, on affiche l'image d'un collectible ramasse par-dessus celle du joueur, et on met a jour la map (map[x][y] = 'c').
-- Sinon, verifier si la case de depart est la sortie (was_exit == 1): si c'est le cas, on repasse was_exit a 0, on affiche l'image de la sortie par-dessus celle du joueur, et on met a jour la map (map[x][y] = 'E').
-- Sinon: on affiche l'image d'un sol simple par-dessus celle du joueur, et on met a jour la map (map[x][y] = '0').
+**Case de départ**
+- Vérifier si la case de départ est un collectible ramassé (was_collectible == 1): si c'est le cas, on repasse was_collectible à 0, on affiche l'image d'un collectible ramassé par-dessus celle du joueur, et on met à jour la map (map[x][y] = 'c').
+- Sinon, vérifier si la case de départ est la sortie (was_exit == 1): si c'est le cas, on repasse was_exit à 0, on affiche l'image de la sortie par-dessus celle du joueur, et on met à jour la map (map[x][y] = 'E').
+- Sinon: on affiche l'image d'un sol simple par-dessus celle du joueur, et on met à jour la map (map[x][y] = '0').
 
-**Case d'arrivee**
-- On affiche l'image du joueur par-dessus celle de la case d'arrivee. Dans mon projet, l'image exacte depend de la direction prise par le joueur (gauche, droite, haut, bas) et d'une boucle qui s'incremente a chaque mouvement puis revient a 0 une fois le max atteint.
-- Verifier si la case d'arrivee est un collectible (map[x][y] == 'C'): si c'est le cas, on decremente le nombre de collectible restants et on met a jour la map (map[x][y] = 'c').
-- Verifier si la case d'arrivee est un collectible ramasse (map[x][y] == 'c'): si c'est le cas, on passe was_collectible a 1.
-- Sinon, verifier si la case d'arrivee est la sortie (map[x][y] == 'E'): si c'est le cas,
-  - verifier si tous les collectibles ont ete ramasses: si c'est le cas, on appele **on_destroy()**.
-  - Sinon, on passe was_exit a 1.
-- On met a jour la map (map[x][y] = 'P').
+**Case d'arrivée**
+- On affiche l'image du joueur par-dessus celle de la case d'arrivée. Dans mon projet, l'image exacte dépend de la direction prise par le joueur (gauche, droite, haut, bas) et d'une boucle qui s'incrémente à chaque mouvement puis revient à 0 une fois le max atteint.
+- Vérifier si la case d'arrivee est un collectible (map[x][y] == 'C'): si c'est le cas, on decremente le nombre de collectible restants et on met a jour la map (map[x][y] = 'c').
+- Vérifier si la case d'arrivée est un collectible ramassé (map[x][y] == 'c'): si c'est le cas, on passe was_collectible à 1.
+- Sinon, vérifier si la case d'arrivée est la sortie (map[x][y] == 'E'): si c'est le cas,
+  - vérifier si tous les collectibles ont ete ramassés: si c'est le cas, on appele **on_destroy()**.
+  - Sinon, on passe was_exit à 1.
+- On met à jour la map (map[x][y] = 'P').
