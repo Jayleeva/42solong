@@ -49,7 +49,7 @@ Faire des maps tests pour chaque erreur.
 - Puis qui appelle **mlx_new_window()** sur le win_ptr de la structure pour creer la nouvelle fenetre. 
 - Puis qui appelle **mlx_loop()** sur le mlx_ptr de la structure pour faire tourner le programme à l'infini, jusqu'au exit().
 
-La taille de la fenetre = la taille de votre map, soit pour la hauteur le nombre de lignes * la hauteur d'une de vos tuile et pour la largeur le nombre de colonnes * la largeur d'une de vos tuiles. Prevoyez de l'espace en plus si vous souhaitez afficher le nombre de mouvements directement sur la fenetre?
+La taille de la fenetre = la taille de votre map, soit pour la hauteur le nombre de lignes * la hauteur d'une de vos tuile et pour la largeur le nombre de colonnes * la largeur d'une de vos tuiles. 
 
 # Poser les images
 - Convertir les PNG en XPM via un site de conversion (https://to.imagestool.com/png-to-xpm), mettre les XPM dans les sources.
